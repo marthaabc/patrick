@@ -1,0 +1,41 @@
+/* HEADER */
+header {
+    position: sticky;   /* ikomeza kuguma hejuru */
+    top: 0;
+    z-index: 1000;
+
+    background: linear-gradient(to right, #2e7d32, #43a047);
+    color: white;
+    padding: 15px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Title */
+header h1 {
+    font-size: 22px;
+}
+
+/* Search */
+header input {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+}
+
+/* Cart */
+.cart-btn {
+    background: #66bb6a;
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.cart-btn:hover {
+    background: #1b5e20;
+}

@@ -1,0 +1,42 @@
+/* HEADER */
+header {
+    background-color: #2e7d32;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header input {
+    padding: 8px;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+}
+
+.cart-btn {
+    display: inline-block;
+    margin-left: 10px;
+    background-color: #66bb6a;
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+/* FOOTER */
+.footer {
+    background-color: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 14px;
+}
