@@ -2,130 +2,200 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Order System</title>
-</head>
 
-<body style="font-family: Arial; background:#eaf7ea; margin:0; display:flex; flex-direction:column; min-height:100vh;">
+<style>
+body{
+    font-family: Arial;
+    background:#eaf7ea;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
 
-<!-- HEADER -->
-<header style="
+/* HEADER */
+header{
     background:#1b5e20;
     color:white;
-    padding:15px 25px;
+    padding:15px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-">
+    flex-wrap:wrap;
+}
 
-    <h1 style="margin:0; font-size:20px;">
-        RW-Rulindo Agro Market
-    </h1>
+/* NAV */
+nav{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
 
-    <!-- MENU RIGHT -->
-    <nav style="display:flex; align-items:center; gap:18px;">
+nav a{
+    color:white;
+    text-decoration:none;
+}
 
-        <a href="index.html" style="color:white; text-decoration:none;">Home</a>
-        <a href="login.html" style="color:white; text-decoration:none;">login</a>
-        <a href="productshop.html" style="color:white; text-decoration:none;">shop</a>
-        <a href="service.html" style="color:white; text-decoration:none;">service</a>
-         <a href="checkautform.html" style="color:white; text-decoration:none;">checkaut</a>
+/* MAIN CENTER */
+.main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex:1;
+    padding:20px;
+}
 
-        <!-- ICONS -->
-        <span style="cursor:pointer; font-size:18px;">🔍</span>
-        <span style="cursor:pointer; font-size:18px;">🛒</span>
-        <span style="cursor:pointer; font-size:18px;">👤</span>
+/* BOXES */
+.box{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:100%;
+    max-width:320px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
 
-    </nav>
+/* INPUTS */
+input, select, button{
+    width:100%;
+    padding:10px;
+    margin:6px 0;
+    box-sizing:border-box;
+}
+
+/* BUTTON */
+button{
+    background:#1b5e20;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    background:#1b5e20;
+    color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+/* 📱 RESPONSIVE */
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    nav{
+        width:100%;
+        justify-content:center;
+    }
+
+    footer{
+        flex-direction:column;
+        text-align:center;
+        gap:10px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+<h1 style="margin:0; font-size:20px;">
+RW-Rulindo Agro Market
+</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="productshop.html">Shop</a>
+<a href="service.html">Service</a>
+<a href="checkautform.html">Checkout</a>
+
+<span>🔍</span>
+<span>🛒</span>
+<span>👤</span>
+</nav>
 
 </header>
 
 <!-- BACK BUTTON -->
 <div style="padding:15px;">
-  <a href="index.html" 
-  style="padding:10px 20px; background:#2e7d32; color:white; text-decoration:none; border-radius:5px;">
-  ⬅ Back to Home
-  </a>
+<a href="index.html" 
+style="padding:10px 20px; background:#2e7d32; color:white; text-decoration:none; border-radius:5px;">
+⬅ Back to Home
+</a>
 </div>
 
 <!-- MAIN -->
-<div style="display:flex; justify-content:center; align-items:center; flex:1;">
+<div class="main">
 
-  <!-- LOGIN BOX -->
-  <div id="loginBox" style="background:white; padding:20px; border-radius:10px; width:300px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+<!-- LOGIN BOX -->
+<div id="loginBox" class="box">
 
-    <h2 style="text-align:center; color:#1b5e20;">Login</h2>
+<h2 style="text-align:center; color:#1b5e20;">Login</h2>
 
-    <input id="username" type="text" placeholder="Enter Name"
-      style="width:100%; padding:8px; margin:8px 0;">
+<input id="username" type="text" placeholder="Enter Name">
 
-    <button onclick="login()"
-      style="width:100%; padding:10px; background:#1b5e20; color:white; border:none; cursor:pointer;">
-      Login
-    </button>
+<button onclick="login()">Login</button>
 
-  </div>
+</div>
 
-  <!-- ORDER BOX -->
-  <div id="orderBox" style="display:none; background:white; padding:20px; border-radius:10px; width:320px; box-shadow:0 0 10px rgba(0,0,0,0.1);">
+<!-- ORDER BOX -->
+<div id="orderBox" class="box" style="display:none;">
 
-    <h2 style="text-align:center; color:#1b5e20;">Order Form</h2>
+<h2 style="text-align:center; color:#1b5e20;">Order Form</h2>
 
-    <input type="text" placeholder="Customer Name"
-      style="width:100%; padding:8px; margin:6px 0;">
+<input type="text" placeholder="Customer Name">
+<input type="tel" placeholder="Phone Number">
+<input type="text" placeholder="Delivery Address">
+<input type="date">
 
-    <input type="tel" placeholder="Phone Number"
-      style="width:100%; padding:8px; margin:6px 0;">
+<select>
+<option>Select Payment Method</option>
+<option>Cash</option>
+<option>Mobile Money</option>
+<option>Card</option>
+</select>
 
-    <input type="text" placeholder="Delivery Address"
-      style="width:100%; padding:8px; margin:6px 0;">
+<button onclick="submitOrder()">Submit</button>
 
-    <input type="date"
-      style="width:100%; padding:8px; margin:6px 0;">
+<button onclick="logout()" style="background:red; margin-top:10px;">
+Logout
+</button>
 
-    <select style="width:100%; padding:8px; margin:6px 0;">
-      <option>Select Payment Method</option>
-      <option>Cash</option>
-      <option>Mobile Money</option>
-      <option>Card</option>
-    </select>
-
-    <button onclick="submitOrder()"
-      style="width:100%; padding:10px; background:#1b5e20; color:white; border:none; cursor:pointer;">
-      Submit
-    </button>
-
-    <button onclick="logout()"
-      style="width:100%; padding:10px; margin-top:10px; background:red; color:white; border:none; cursor:pointer;">
-      Logout
-    </button>
-
-  </div>
+</div>
 
 </div>
 
 <!-- FOOTER -->
-<footer style="
-    background:#1b5e20;
-    color:white;
-    padding:20px 25px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-">
+<footer>
 
-    <div>
-        <h3 style="margin:0;">RW-Rulindo Agro Market</h3>
-        <p style="margin:5px 0; font-size:13px;">
-            Trusted agricultural marketplace
-        </p>
-    </div>
+<div>
+<h3 style="margin:0;">RW-Rulindo Agro Market</h3>
+<p style="margin:5px 0; font-size:13px;">
+Trusted agricultural marketplace
+</p>
+</div>
 
-    <div style="display:flex; gap:15px; flex-wrap:wrap;">
-        <p style="margin:0;">Email: info@agromarket.rw</p>
-        <p style="margin:0;">Tel: +250 735 907 160</p>
-        <p style="margin:0;">© 2026 All Rights Reserved</p>
-    </div>
+<div style="display:flex; gap:15px; flex-wrap:wrap;">
+<p>Email: info@agromarket.rw</p>
+<p>Tel: +250 735 907 160</p>
+<p>© 2026 All Rights Reserved</p>
+</div>
 
 </footer>
 
@@ -159,8 +229,8 @@ function submitOrder() {
   alert("Order submitted successfully!");
 }
 
-// AUTO LOGIN CHECK
-if(localStorage.getItem("user")) {
+// AUTO LOGIN
+if(localStorage.getItem("user")){
   showOrder();
 }
 </script>

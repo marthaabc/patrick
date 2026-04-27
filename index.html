@@ -4,142 +4,311 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RW-Rulindo Agro Market</title>
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+body{
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+}
+
+/* HEADER */
+header{
+    background:#1b5e20;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:white;
+    padding:5px;
+}
+
+.logo h1{
+    font-size:18px;
+}
+
+.logo p{
+    font-size:12px;
+}
+
+nav{
+    display:flex;
+    gap:15px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:url('mu.png') center/cover no-repeat;
+    padding:20px;
+}
+
+.hero-text{
+    background:rgba(255,255,255,0.85);
+    padding:20px;
+    border-radius:10px;
+    max-width:600px;
+}
+
+.hero-text h2{
+    color:#1b5e20;
+}
+
+/* BANNER */
+.banner{
+    padding:40px 20px;
+    text-align:center;
+    background:#e8f5e9;
+}
+
+.banner img{
+    width:100%;
+    max-width:700px;
+    border-radius:10px;
+    border:2px solid #2e7d32;
+}
+
+.banner a{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#2e7d32;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+/* SECTIONS */
+section{
+    padding:50px 20px;
+    text-align:center;
+    background:white;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+.grid img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+    background:#1b5e20;
+    color:white;
+    margin-top:40px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:30px;
+}
+
+footer a{
+    color:#c8e6c9;
+    text-decoration:none;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        text-align:center;
+        gap:10px;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .hero{
+        min-height:60vh;
+    }
+
+    .hero-text h2{
+        font-size:20px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .hero-text{
+        padding:15px;
+    }
+
+    .hero-text h2{
+        font-size:18px;
+    }
+
+    nav a{
+        font-size:14px;
+    }
+
+}
+
+</style>
 </head>
 
-<body style="margin:0; font-family:Arial; background:#f5f5f5;">
+<body>
 
 <!-- HEADER -->
-<header style="background:#1b5e20; color:white; padding:30px; display:flex; justify-content:space-between; align-items:center;">
+<header>
 
-    <div style="display:flex; align-items:center; gap:15px;">
-        <img src="agricultural logo.png" style="width:50px; height:50px; border-radius:40px; background:white; padding:5px;">
-        <div>
-            <h1 style="margin:0; font-size:22px;">RW-Rulindo Agro Market</h1>
-            <p style="margin:0; font-size:13px;">Trusted market for crops and agricultural products</p>
-        </div>
-    </div>
+<div class="logo">
+<img src="agricultural logo.png">
+<div>
+<h1>RW-Rulindo Agro Market</h1>
+<p>Welcome to market for crops and agricultural products</p>
+</div>
+</div>
 
-    <nav style="display:flex; gap:25px;">
-        <a href="index.html" style="color:white; text-decoration:none; font-weight:bold;">Home</a>
-        <a href="login2.html" style="color:white; text-decoration:none; font-weight:bold;">Login</a>
-        <a href="productshop.html" style="color:white; text-decoration:none; font-weight:bold;">shop</a>
-        <a href="service.html" style="color:white; text-decoration:none; font-weight:bold;">Services</a>
-        <a href="checkautform.html" style="color:white; text-decoration:none; font-weight:bold;">orders&checkaut</a>
-         </nav>
+<nav>
+<a href="index.html">Home</a>
+<a href="login2.html">Login</a>
+<a href="productshop.html">Shop</a>
+<a href="service.html">Services</a>
+<a href="checkautform.html">Orders</a>
+</nav>
 
 </header>
 
 <!-- HERO -->
-<section style="height:800px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; 
-color:white; background:url('pac.png') center/cover no-repeat;">
-
-    <h2 style="font-size:35px;"> welcome to rw-rulindo agro marketing for Buy and Sell Agricultural Products Easily</h2>
-    <p>We connect farmers directly to buyers</p>
-
+<section class="hero">
+<div class="hero-text">
+<h2>Welcome to RW-Rulindo Agro Marketing for Buy and Sell Agricultural Products Easily</h2>
+<p>We connect farmers directly to buyers</p>
+</div>
 </section>
 
-<!-- NEW BANNER (ICYAPA) -->
-<section style="padding:60px 20px; background:#e8f5e9; text-align:center;">
- <img src="martha image.png" 
-     style="width:400px; height:180px; object-fit:cover; border-radius:8px; border:2px solid #2e7d32;">
-
-    <a href="productshop.html" style="display:inline-block; margin-top:20px; padding:12px 25px; background:#2e7d32;
-     color:white; text-decoration:none; border-radius:5px;">
-        Shop Now
-    </a>
-
+<!-- BANNER -->
+<section class="banner">
+<img src="martha image.png">
+<br>
+<a href="productshop.html">Shop Now</a>
 </section>
 
-<!-- SERVICES -->
-<section style="padding:50px 20px; text-align:center; background:white;">
-    <h2 style="color:#2e7d32;">Agricultural products in the Market</h2>
+<!-- PRODUCTS -->
+<section>
+<h2 style="color:#2e7d32;">Agricultural products in the Market</h2>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin-top:20px;">
+<div class="grid">
 
-        <div>
-            <img src="nathanimage4.jfif" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
-            <p>Farmer Jean</p>
-        </div>
+<div>
+<img src="nathanimage4.jfif">
+<p>Farmer Jean</p>
+</div>
 
-        <div>
-            <img src="nathanimage5.jfif" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
-            <p>Farmer Marie</p>
-        </div>
+<div>
+<img src="nathanimage5.jfif">
+<p>Farmer Marie</p>
+</div>
 
-        <div>
-            <img src="nathanimage6.jfif" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
-            <p>Farmer Bosco</p>
-        </div>
+<div>
+<img src="nathanimage6.jfif">
+<p>Farmer Bosco</p>
+</div>
 
-        <div>
-            <img src="nathanimage7.jfif" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
-            <p>Farmer Aline</p>
-        </div>
+<div>
+<img src="nathanimage7.jfif">
+<p>Farmer Aline</p>
+</div>
 
-    </div>
+</div>
 </section>
 
 <!-- FARMERS -->
-<section style="padding:50px 20px; text-align:center; background:white;">
-    <h2 style="color:#2e7d32;">Our farmers’ workplace</h2>
+<section>
+<h2 style="color:#2e7d32;">Our farmers’ workplace</h2>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin-top:20px;">
+<div class="grid">
 
-        <div>
-            <img src="nathanimage3.jfif" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
-            <p>Farmer Jean</p>
-        </div>
+<div>
+<img src="nathanimage3.jfif">
+<p>Farmer Jean</p>
+</div>
 
-        <div>
-            <img src="nathanimage2.jfif" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
-            <p>Farmer Marie</p>
-        </div>
+<div>
+<img src="nathanimage2.jfif">
+<p>Farmer Marie</p>
+</div>
 
-        <div>
-            <img src="nathanimage1.jfif" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
-            <p>Farmer Bosco</p>
-        </div>
+<div>
+<img src="nathanimage1.jfif">
+<p>Farmer Bosco</p>
+</div>
 
-        <div>
-            <img src="nathanimage.jfif" style="width:100%; height:200px; object-fit:cover; border-radius:10px;">
-            <p>Farmer Aline</p>
-        </div>
+<div>
+<img src="nathanimage.jfif">
+<p>Farmer Aline</p>
+</div>
 
-    </div>
+</div>
 </section>
 
 <!-- FOOTER -->
-<footer style="background:#1b5e20; color:white; margin-top:40px;">
+<footer>
 
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:30px;">
+<div class="footer-grid">
 
-        <div>
-            <h3>RW-Rulindo Agro Market</h3>
-            <p style="font-size:14px;">
-                We connect farmers and buyers across Rwanda to ensure fair trade and easy access to agricultural products.
-            </p>
-        </div>
+<div>
+<h3>RW-Rulindo Agro Market</h3>
+<p>We connect farmers and buyers across Rwanda to ensure fair trade and easy access to agricultural products.</p>
+</div>
 
-        <div>
-            <h3>Quick Links</h3>
-            <p><a href="index.html" style="color:#c8e6c9; text-decoration:none;">Home</a></p>
-            <p><a href="productshop.html" style="color:#c8e6c9; text-decoration:none;">shop</a></p>
-            <p><a href="service.html" style="color:#c8e6c9; text-decoration:none;">Services</a></p>
-            <p><a href="contact.html" style="color:#c8e6c9; text-decoration:none;">Contact</a></p>
-        </div>
+<div>
+<h3>Quick Links</h3>
+<p><a href="index.html">Home</a></p>
+<p><a href="productshop.html">Shop</a></p>
+<p><a href="service.html">Services</a></p>
+<p><a href="contact.html">Contact</a></p>
+</div>
 
-        <div>
-            <h3>Contact Us</h3>
-            <p>Email: info@agromarket.rw</p>
-            <p>Tel: +250 735 907 16</p>
-            <p>Location: Rulindo, Rwanda</p>
-        </div>
-
-    </div>
-
-    <div style="text-align:center; padding:15px; background:#144d17;">
-        © 2026 RW-Rulindo Agro Market | All Rights Reserved
-    </div>
+</div>
 
 </footer>
 

@@ -2,153 +2,188 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Register - Agro Market</title>
-</head>
 
-<body style="
+<style>
+body{
     margin:0;
     font-family:Arial;
     background:#f5f5f5;
     display:flex;
     flex-direction:column;
     min-height:100vh;
-">
+}
 
-<!-- HEADER -->
-<header style="
+/* HEADER */
+header{
     background:#1b5e20;
     color:white;
-    padding:15px 25px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-">
-
-    <h1 style="margin:0; font-size:20px;">
-        RW-Rulindo Agro Market
-    </h1>
-
-    <!-- MENU -->
-    <nav style="display:flex; align-items:center; gap:18px;">
-
-        <a href="index.html" style="color:white; text-decoration:none; font-weight:bold;">Home</a>
-        <a href="login.html" style="color:white; text-decoration:none; font-weight:bold;">Login</a>
-        <a href="productshop.html" style="color:white; text-decoration:none; font-weight:bold;">shop</a>
-        <a href="service.html" style="color:white; text-decoration:none; font-weight:bold;">Services</a>
-        <a href="checkautform.html" style="color:white; text-decoration:none; font-weight:bold;">Checkout</a>
-
-        <!-- ICONS -->
-        <span style="cursor:pointer;">🔍</span>
-        <span style="cursor:pointer;">🛒</span>
-        <span style="cursor:pointer;">👤</span>
-
-    </nav>
-
-</header>
-
-<!-- MAIN CONTENT -->
-<main style="
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:30px;
-">
-
-    <div style="
-        width:350px;
-        background:white;
-        padding:25px;
-        border-radius:10px;
-        box-shadow:0 0 10px rgba(0,0,0,0.1);
-    ">
-
-        <!-- BACK BUTTON FIXED -->
-        <button onclick="history.back()" style="
-            width:100%;
-            padding:10px;
-            margin-bottom:10px;
-            background:gray;
-            color:white;
-            border:none;
-            cursor:pointer;
-            border-radius:5px;
-        ">
-            ⬅ Back
-        </button>
-
-        <h2 style="text-align:center; color:#1b5e20;">
-            Sign up
-        </h2>
-
-        <input type="text" id="regUser" placeholder="Username" style="
-            width:100%;
-            padding:10px;
-            margin:8px 0;
-            border:1px solid #ccc;
-            border-radius:5px;
-        ">
-
-        <input type="password" id="regPass" placeholder="Password" style="
-            width:100%;
-            padding:10px;
-            margin:8px 0;
-            border:1px solid #ccc;
-            border-radius:5px;
-        ">
-
-        <button onclick="register()" style="
-            width:100%;
-            padding:10px;
-            background:#1b5e20;
-            color:white;
-            border:none;
-            border-radius:5px;
-            cursor:pointer;
-        ">
-            Register
-        </button>
-
-        <p style="text-align:center;">
-            <a href="forgot.html">Forgot Password?</a>
-        </p>
-
-        <p style="text-align:center;">
-        Already have an account?
-            <a href="login.html">Login</a>
-        </p>
-
-    </div>
-
-</main>
-
-<!-- FOOTER -->
-<footer style="
-    background:#1b5e20;
-    color:white;
-    padding:20px 25px;
+    padding:15px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
     flex-wrap:wrap;
-">
+}
 
-    <div>
-        <h3 style="margin:0;">RW-Rulindo Agro Market</h3>
-        <p style="margin:5px 0; font-size:13px;">
-            Trusted agricultural marketplace
-        </p>
-    </div>
+/* NAV */
+nav{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
 
-    <div style="display:flex; gap:15px; flex-wrap:wrap;">
-        <p style="margin:0;">Email: info@agromarket.rw</p>
-        <p style="margin:0;">Tel: +250 735 907 160</p>
-        <p style="margin:0;">© 2026 All Rights Reserved</p>
-    </div>
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* MAIN */
+main{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+/* FORM BOX */
+.form-box{
+    width:100%;
+    max-width:350px;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+/* INPUTS */
+input, button{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:5px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+/* BUTTON */
+button{
+    background:#1b5e20;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+    background:#1b5e20;
+    color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+/* 📱 RESPONSIVE */
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    nav{
+        width:100%;
+        justify-content:center;
+    }
+
+    footer{
+        flex-direction:column;
+        text-align:center;
+        gap:10px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+<h1 style="margin:0; font-size:20px;">
+RW-Rulindo Agro Market
+</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="login.html">Login</a>
+<a href="productshop.html">Shop</a>
+<a href="service.html">Services</a>
+<a href="checkautform.html">Checkout</a>
+
+
+</nav>
+
+</header>
+
+<!-- MAIN -->
+<main>
+
+<div class="form-box">
+
+<button onclick="history.back()" style="background:gray;">
+⬅ Back
+</button>
+
+<h2 style="text-align:center; color:#1b5e20;">
+Sign up
+</h2>
+
+<input type="text" id="regUser" placeholder="Username">
+<input type="password" id="regPass" placeholder="Password">
+
+<button onclick="register()">
+Register
+</button>
+
+<p style="text-align:center;">
+<a href="forgot.html">Forgot Password?</a>
+</p>
+
+<p style="text-align:center;">
+Already have an account?
+<a href="login.html">Login</a>
+</p>
+
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+
+<div>
+<h3 style="margin:0;">RW-Rulindo Agro Market</h3>
+<p style="margin:5px 0; font-size:13px;">
+Trusted agricultural marketplace
+</p>
+</div>
+
+<div style="display:flex; gap:15px; flex-wrap:wrap;">
+<p>Email: info@agromarket.rw</p>
+<p>Tel: +250 735 907 160</p>
+<p>© 2026 All Rights Reserved</p>
+</div>
 
 </footer>
 
-<!-- SCRIPT -->
 <script>
 function register() {
     let user = document.getElementById("regUser").value;
