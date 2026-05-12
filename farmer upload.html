@@ -5,8 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Farmer Upload Product - RW Agro Market</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
+
+/* BODY */
 body{
     margin:0;
     font-family:Arial;
@@ -43,19 +47,13 @@ header{
     width:60px;
     height:60px;
     border-radius:10px;
-    object-fit:cover;
     background:white;
+    object-fit:cover;
 }
 
 .logo h1{
     margin:0;
     font-size:20px;
-}
-
-.logo p{
-    margin:0;
-    font-size:13px;
-    opacity:0.9;
 }
 
 /* NAV */
@@ -108,7 +106,7 @@ input, textarea, select{
     border:1px solid #ccc;
 }
 
-/* IMAGE PREVIEW */
+/* IMAGE */
 #preview{
     width:100%;
     max-height:250px;
@@ -133,6 +131,25 @@ button:hover{
     background:#1b5e20;
 }
 
+/* VIEW ORDERS BUTTON */
+.green-btn{
+    background:#2e7d32;
+    color:white;
+    padding:14px 28px;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:bold;
+    text-decoration:none;
+    display:inline-block;
+    transition:0.3s;
+    margin-top:20px;
+}
+
+.green-btn:hover{
+    background:#1b5e20;
+    transform:scale(1.05);
+}
+
 /* FOOTER */
 footer{
     background:#1b5e20;
@@ -154,12 +171,10 @@ footer{
     text-decoration:none;
     display:block;
     margin:5px 0;
-    opacity:0.9;
 }
 
 .footer-grid a:hover{
     text-decoration:underline;
-    opacity:1;
 }
 
 /* SOCIAL */
@@ -167,6 +182,8 @@ footer{
     display:flex;
     gap:10px;
     margin-top:10px;
+
+      
 }
 
 .social a{
@@ -179,7 +196,6 @@ footer{
     background:rgba(255,255,255,0.2);
     color:white;
     text-decoration:none;
-    transition:0.3s;
 }
 
 .social a:hover{
@@ -187,50 +203,37 @@ footer{
     color:#1b5e20;
 }
 
-/* BOTTOM TEXT */
+/* BOTTOM */
 .bottom{
     text-align:center;
     margin-top:20px;
     font-size:14px;
     opacity:0.8;
 }
-</style>
 
+</style>
 </head>
 
 <body>
 
 <!-- HEADER -->
-<header style="background:#1b5e20; color:white; padding:15px; position:sticky; top:0; z-index:1000;">
+<header>
 
-<div style="max-width:1100px; margin:auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+<div class="header-container">
 
-<!-- LOGO -->
-<div style="display:flex; align-items:center; gap:12px;">
-
-<img src="agricultural logo.png" 
-style="width:60px; height:60px; border-radius:10px; object-fit:cover; background:white;">
-
-<div>
-<h1 style="margin:0; font-size:20px;">RW-Rulindo Agro Market</h1>
-<p style="margin:0; font-size:13px; opacity:0.9;">
-Market for crops & agricultural products
-</p>
+<div class="logo">
+<img src="agricultural logo.png">
+<h1>RW-Rulindo Agro Market</h1>
 </div>
 
-</div>
-
-<!-- NAV -->
-<nav style="display:flex; gap:10px; flex-wrap:wrap;">
-
-<a href="index.html" style="color:white; text-decoration:none; font-weight:bold;">Home</a>
-<a href="login2.html" style="color:white; text-decoration:none; font-weight:bold;">Login</a>
-<a href="productshop.html" style="color:white; text-decoration:none; font-weight:bold;">Shop</a>
-<a href="service.html" style="color:white; text-decoration:none; font-weight:bold;">Services</a>
-<a href="checkautform.html" style="color:white; text-decoration:none; font-weight:bold;">Orders</a>
-<a href="contact.html" style="color:white; text-decoration:none; font-weight:bold;">Contact</a>
-<a href="sign up.html" style="color:white; text-decoration:none; font-weight:bold;">Sign up</a>
-
+<nav>
+<a href="index.html">Home</a>
+<a href="login2.html">Login</a>
+<a href="productshop.html">Shop</a>
+<a href="service.html">Services</a>
+<a href="checkautform.html">Orders</a>
+<a href="contact.html">Contact</a>
+<a href="sign up.html">Sign Up</a>
 </nav>
 
 </div>
@@ -240,7 +243,7 @@ Market for crops & agricultural products
 <!-- CONTENT -->
 <div class="container">
 
-<!-- DETAILS -->
+<!-- PRODUCT FORM -->
 <div class="card">
 <h2>📦 Product Details</h2>
 
@@ -266,16 +269,26 @@ Market for crops & agricultural products
 
 <input type="file" accept="image/*" onchange="previewImage(event)">
 <img id="preview">
-
 </div>
 
-<!-- BUTTON -->
+<!-- SUBMIT -->
 <div class="card">
 <h2>🚀 Submit Product</h2>
 <button onclick="submitProduct()">Upload Product</button>
+
+<br>
+
+
+
+
 </div>
 
 </div>
+
+<!-- VIEW ORDERS BUTTON -->
+<a href="view order.html" class="green-btn">
+View Orders
+</a>
 
 <!-- FOOTER -->
 <footer>
@@ -284,7 +297,7 @@ Market for crops & agricultural products
 
 <div>
 <h3>RW-Rulindo Agro Market</h3>
-<p>We connect farmers and buyers across Rwanda with fresh agricultural products.</p>
+<p>We connect farmers and buyers across Rwanda.</p>
 </div>
 
 <div>
@@ -301,12 +314,10 @@ Market for crops & agricultural products
 <h3>Follow Us</h3>
 
 <div class="social">
-
 <a href="https://facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
 <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
 <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
 <a href="https://wa.me/250788123456"><i class="fa-brands fa-whatsapp"></i></a>
-
 </div>
 
 </div>
@@ -314,7 +325,7 @@ Market for crops & agricultural products
 </div>
 
 <div class="bottom">
-© 2026 RW-Rulindo Agro Market | Farmer Upload System 🌾👨‍🌾
+© 2026 RW-Rulindo Agro Market 🌾
 </div>
 
 </footer>
@@ -330,7 +341,6 @@ function previewImage(event){
 
 // SUBMIT
 function submitProduct(){
-
     let name = document.getElementById("name").value;
 
     if(name === ""){

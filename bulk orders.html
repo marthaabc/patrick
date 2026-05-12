@@ -16,8 +16,52 @@ body{
 header{
     background:#1b5e20;
     color:white;
-    text-align:center;
-    padding:20px;
+    padding:15px 0;
+}
+
+.header-container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo img{
+    width:50px;
+    height:50px;
+}
+
+/* NAV MENU */
+.nav{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    padding:8px 12px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.4);
+    transition:0.3s;
+}
+
+.nav a:hover{
+    background:white;
+    color:#1b5e20;
+    border-color:white;
 }
 
 /* CONTAINER */
@@ -73,7 +117,7 @@ button:hover{
     border-radius:8px;
 }
 
-/* PRODUCT LIST */
+/* PRODUCT ROW */
 .product-row{
     display:grid;
     grid-template-columns:2fr 1fr 1fr;
@@ -85,9 +129,46 @@ button:hover{
 footer{
     background:#1b5e20;
     color:white;
-    text-align:center;
-    padding:15px;
+    padding:20px;
     margin-top:30px;
+}
+
+.footer-container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.footer-links a{
+    color:#c8e6c9;
+    text-decoration:none;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+.social{
+    display:flex;
+    gap:10px;
+}
+
+.social a{
+    padding:8px 12px;
+    background:#2e7d32;
+    border-radius:5px;
+    color:white;
+    text-decoration:none;
 }
 </style>
 
@@ -97,23 +178,39 @@ footer{
 
 <!-- HEADER -->
 <header>
-<h1>📦 Bulk Orders</h1>
-<p>Order large quantities of farm products 🌾</p>
+<div class="header-container">
+
+    <div class="logo">
+        <img src="agricultural logo.png" alt="logo">
+        <div>
+            <h1>RW-Rulindo Agro Market</h1>
+            <p>Welcome to market for crops and agricultural products</p>
+        </div>
+    </div>
+
+    <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="login2.html">Login</a>
+        <a href="sign up.html">Sign Up</a>
+        <a href="productshop.html">Shop</a>
+        <a href="service.html">Services</a>
+        <a href="checkautform.html">Orders</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</div>
 </header>
 
+<!-- CONTENT -->
 <div class="container">
 
-<!-- CUSTOMER INFO -->
 <div class="card">
 <h2>👤 Customer Information</h2>
-
 <input type="text" id="name" placeholder="Full Name / Company">
 <input type="text" id="phone" placeholder="Phone Number">
 <input type="text" id="location" placeholder="Location (District)">
-
 </div>
 
-<!-- PRODUCTS -->
 <div class="card">
 <h2>🌾 Select Products</h2>
 
@@ -141,10 +238,8 @@ footer{
 <div class="summary" id="summary">
 Total will appear here...
 </div>
-
 </div>
 
-<!-- DELIVERY -->
 <div class="card">
 <h2>🚚 Delivery Information</h2>
 <p>✔ Delivery within 24–72 hours</p>
@@ -152,26 +247,48 @@ Total will appear here...
 <p>✔ Safe transport of agricultural products</p>
 </div>
 
-<!-- CONTACT -->
 <div class="card">
 <h2>📞 Confirm Order</h2>
-
 <button onclick="submitOrder()">Submit Bulk Order</button>
-
 </div>
 
 </div>
 
 <!-- FOOTER -->
 <footer>
-© 2026 RW-Rulindo Agro Market | Bulk Orders 📦🌾
+<div class="footer-container">
+
+<div>
+<h3>RW-Rulindo Agro Market</h3>
+<p>We connect farmers and buyers across Rwanda.</p>
+</div>
+
+<div>
+<h3>Quick Links</h3>
+<div class="footer-links">
+<a href="index.html">Home</a>
+<a href="login2.html">Login</a>
+<a href="productshop.html">Shop</a>
+<a href="service.html">Service</a>
+<a href="contact.html">Contact</a>
+</div>
+</div>
+
+<div>
+<h3>Follow Us</h3>
+<div class="social">
+<a href="#">FB</a>
+<a href="#">IG</a>
+<a href="#">TW</a>
+<a href="https://wa.me/250735907160">WA</a>
+</div>
+</div>
+
+</div>
 </footer>
 
 <script>
-
-// CALCULATE DISCOUNT + TOTAL
 function calculateTotal(){
-
     let qty = document.getElementById("qty").value;
     let price = document.getElementById("price").value;
 
@@ -179,10 +296,10 @@ function calculateTotal(){
     let discount = 0;
 
     if(qty >= 200){
-        discount = 0.2; // 20%
+        discount = 0.2;
     }
     else if(qty >= 50){
-        discount = 0.1; // 10%
+        discount = 0.1;
     }
 
     let finalPrice = total - (total * discount);
@@ -193,11 +310,9 @@ function calculateTotal(){
     "✔ Final Price: <b>" + finalPrice + " RWF</b>";
 }
 
-// SUBMIT ORDER
 function submitOrder(){
     alert("✅ Bulk order submitted successfully!\nWe will contact you soon 🚚");
 }
-
 </script>
 
 </body>

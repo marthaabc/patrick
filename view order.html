@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Farmer Orders - RW Agro Market</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* BODY */
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f1f8e9;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    background:#1b5e20;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    box-shadow:0 2px 10px rgba(0,0,0,0.2);
+}
+
+.logo-section{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-section img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:white;
+    padding:5px;
+}
+
+.logo-section h1{
+    color:white;
+    margin:0;
+    font-size:26px;
+}
+
+/* NAVIGATION */
+nav{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    padding:8px 14px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    background:white;
+    color:#1b5e20;
+}
+
+/* ================= PAGE TITLE ================= */
+
+.page-title{
+    text-align:center;
+    padding:30px 10px 10px;
+}
+
+.page-title h2{
+    color:#1b5e20;
+    margin:0;
+    font-size:35px;
+}
+
+.page-title p{
+    color:#555;
+    margin-top:10px;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:95%;
+    margin:auto;
+    padding:20px 0;
+}
+
+/* ORDER GRID */
+.orders{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+/* ================= ORDER CARD ================= */
+
+.order-card{
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    border-top:6px solid #2e7d32;
+    transition:0.3s;
+}
+
+.order-card:hover{
+    transform:translateY(-5px);
+}
+
+.order-card h2{
+    color:#1b5e20;
+    margin-top:0;
+}
+
+/* INFO */
+.info{
+    line-height:1.9;
+    color:#333;
+}
+
+.info i{
+    color:#2e7d32;
+    margin-right:8px;
+}
+
+/*STATUS */
+
+.status{
+    padding:5px 12px;
+    border-radius:20px;
+    color:white;
+    font-size:14px;
+}
+
+.pending{
+    background:orange;
+}
+
+.accepted{
+    background:green;
+}
+
+.rejected{
+    background:red;
+}
+
+/* BUTTON*/
+
+.buttons{
+    margin-top:15px;
+}
+
+button{
+    padding:10px 16px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:14px;
+    margin-right:10px;
+    transition:0.3s;
+}
+
+.accept-btn{
+    background:#2e7d32;
+    color:white;
+}
+
+.reject-btn{
+    background:#c62828;
+    color:white;
+}
+
+button:hover{
+    opacity:0.9;
+    transform:scale(1.03);
+}
+
+/* FOOTER */
+
+footer{
+    background:#1b5e20;
+    color:white;
+    padding:30px 40px;
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.footer-left{
+    max-width:400px;
+}
+
+.footer-left h3{
+    margin-top:0;
+    font-size:24px;
+}
+
+.footer-left p{
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* SOCIAL ICONS */
+.social-icons{
+    display:flex;
+    gap:12px;
+    margin-top:15px;
+}
+
+.social-icons a{
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    color:white;
+    font-size:18px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.social-icons a:hover{
+    transform:scale(1.1);
+}
+
+.facebook{
+    background:#1877F2;
+}
+
+.instagram{
+    background:#E1306C;
+}
+
+.twitter{
+    background:#1DA1F2;
+}
+
+.whatsapp{
+    background:#25D366;
+}
+
+/* FOOTER RIGHT */
+.footer-right p{
+    margin:10px 0;
+    font-size:15px;
+}
+
+/*  RESPONSIVE */
+
+@media(max-width:768px){
+
+    header{
+        flex-direction:column;
+        text-align:center;
+        gap:15px;
+    }
+
+    nav{
+        justify-content:center;
+    }
+
+    footer{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .social-icons{
+        justify-content:center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="logo-section">
+        <img src="agricultural logo.png">
+        <h1>RW-Rulindo Agro Market</h1>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login2.html">Login</a>
+        <a href="sign up.html">Sign Up</a>
+        <a href="productshop.html">Shop</a>
+        <a href="service.html">Services</a>
+        <a href="checkautform.html">Orders</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+</header>
+
+<!--  TITLE-->
+
+<div class="page-title">
+    <h2>Farmer Orders</h2>
+    <p>View all customer orders and manage them easily.</p>
+</div>
+
+<!-- ORDERS-->
+
+<div class="container">
+
+<div class="orders">
+
+    <!-- ORDER 1 -->
+    <div class="order-card">
+
+        <h2>Order #001</h2>
+
+        <div class="info">
+            <p><i class="fa-solid fa-user"></i> Customer: Jean Claude</p>
+            <p><i class="fa-solid fa-seedling"></i> Product: Irish Potatoes</p>
+            <p><i class="fa-solid fa-weight-hanging"></i> Quantity: 200 KG</p>
+            <p><i class="fa-solid fa-location-dot"></i> Kigali</p>
+            <p><i class="fa-solid fa-phone"></i> +250 788 111 222</p>
+
+            <p>
+                Status:
+                <span class="status pending">Pending</span>
+            </p>
+        </div>
+
+        <div class="buttons">
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+        </div>
+
+    </div>
+
+    <!-- ORDER 2 -->
+    <div class="order-card">
+
+        <h2>Order #002</h2>
+
+        <div class="info">
+            <p><i class="fa-solid fa-user"></i> Customer: Alice</p>
+            <p><i class="fa-solid fa-seedling"></i> Product: Beans</p>
+            <p><i class="fa-solid fa-weight-hanging"></i> Quantity: 150 KG</p>
+            <p><i class="fa-solid fa-location-dot"></i> Musanze</p>
+            <p><i class="fa-solid fa-phone"></i> +250 789 222 333</p>
+
+            <p>
+                Status:
+                <span class="status accepted">Accepted</span>
+            </p>
+        </div>
+
+        <div class="buttons">
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+        </div>
+
+    </div>
+
+    <!-- ORDER 3 -->
+    <div class="order-card">
+
+        <h2>Order #003</h2>
+
+        <div class="info">
+            <p><i class="fa-solid fa-user"></i> Customer: Eric</p>
+            <p><i class="fa-solid fa-seedling"></i> Product: Maize</p>
+            <p><i class="fa-solid fa-weight-hanging"></i> Quantity: 300 KG</p>
+            <p><i class="fa-solid fa-location-dot"></i> Huye</p>
+            <p><i class="fa-solid fa-phone"></i> +250 780 444 555</p>
+
+            <p>
+                Status:
+                <span class="status pending">Pending</span>
+            </p>
+        </div>
+
+        <div class="buttons">
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+        </div>
+
+    </div>
+
+    <!-- ORDER 4 -->
+    <div class="order-card">
+
+        <h2>Order #004</h2>
+
+        <div class="info">
+            <p><i class="fa-solid fa-user"></i> Customer: Diane</p>
+            <p><i class="fa-solid fa-seedling"></i> Product: Tomatoes</p>
+            <p><i class="fa-solid fa-weight-hanging"></i> Quantity: 80 KG</p>
+            <p><i class="fa-solid fa-location-dot"></i> Rubavu</p>
+            <p><i class="fa-solid fa-phone"></i> +250 782 999 000</p>
+
+            <p>
+                Status:
+                <span class="status rejected">Rejected</span>
+            </p>
+        </div>
+
+        <div class="buttons">
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+        </div>
+
+    </div>
+
+    <!-- ORDER 5 -->
+    <div class="order-card">
+
+        <h2>Order #005</h2>
+
+        <div class="info">
+            <p><i class="fa-solid fa-user"></i> Customer: Patrick</p>
+            <p><i class="fa-solid fa-seedling"></i> Product: Rice</p>
+            <p><i class="fa-solid fa-weight-hanging"></i> Quantity: 500 KG</p>
+            <p><i class="fa-solid fa-location-dot"></i> Nyagatare</p>
+            <p><i class="fa-solid fa-phone"></i> +250 783 777 888</p>
+
+            <p>
+                Status:
+                <span class="status pending">Pending</span>
+            </p>
+        </div>
+
+        <div class="buttons">
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+        </div>
+
+    </div>
+
+    <!-- ORDER 6 -->
+    <div class="order-card">
+
+        <h2>Order #006</h2>
+
+        <div class="info">
+            <p><i class="fa-solid fa-user"></i> Customer: Kevin</p>
+            <p><i class="fa-solid fa-seedling"></i> Product: Carrots</p>
+            <p><i class="fa-solid fa-weight-hanging"></i> Quantity: 60 KG</p>
+            <p><i class="fa-solid fa-location-dot"></i> Rwamagana</p>
+            <p><i class="fa-solid fa-phone"></i> +250 784 121 212</p>
+
+            <p>
+                Status:
+                <span class="status accepted">Accepted</span>
+            </p>
+        </div>
+
+        <div class="buttons">
+            <button class="accept-btn">Accept</button>
+            <button class="reject-btn">Reject</button>
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-left">
+
+        <h3>RW-Rulindo Agro Market</h3>
+
+        <p>
+            Trusted agricultural marketplace connecting farmers
+            and customers across Rwanda.
+        </p>
+
+        <div class="social-icons">
+
+            <a href="https://facebook.com" class="facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
+
+            <a href="https://instagram.com" class="instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+            <a href="https://twitter.com" class="twitter">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+
+            <a href="https://wa.me/250735907160" class="whatsapp">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-right">
+
+        <p><i class="fa-solid fa-envelope"></i>mungerinathan@gmail.com</p>
+
+        <p><i class="fa-solid fa-phone"></i> +250 735 907 160</p>
+
+
+        <p>© 2026 All Rights Reserved</p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

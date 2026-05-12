@@ -233,47 +233,21 @@ footer{
 
 <!-- OUTPUT -->
 <div id="output"></div>
-
 <script>
 function submitData(){
 
     let name = document.getElementById("name").value;
-    let location = document.getElementById("location").value;
-    let product = document.getElementById("product").value;
-    let image = document.getElementById("image").value;
-    let price = document.getElementById("price").value;
-    let bio = document.getElementById("bio").value;
 
-    if(name=="" || product=="" || price==""){
-        alert("Uzuza amakuru y'ingenzi!");
+    if(name == ""){
+        alert("Andika izina!");
         return;
     }
 
-    let card = `
-    <div class="card">
-        <h3>👨‍🌾 ${name}</h3>
-        <p>📍 ${location}</p>
-        <p>🌱 ${product}</p>
+    // example save
+    localStorage.setItem("name", name);
 
-        <img class="product-img" src="${image}">
-
-        <p class="price">
-            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png">
-            ${price} RWF
-        </p>
-
-        <p>📝 ${bio}</p>
-    </div>
-    `;
-
-    document.getElementById("output").innerHTML += card;
-
-    document.getElementById("name").value="";
-    document.getElementById("location").value="";
-    document.getElementById("product").value="";
-    document.getElementById("image").value="";
-    document.getElementById("price").value="";
-    document.getElementById("bio").value="";
+    // then redirect
+    window.location.href = "login2.html";
 }
 </script>
 

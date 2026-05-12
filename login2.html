@@ -50,7 +50,7 @@ main{
     padding:20px;
 }
 
-/* FORM BOX */
+/* FORM */
 .form-box{
     width:100%;
     max-width:350px;
@@ -78,6 +78,10 @@ button{
     cursor:pointer;
 }
 
+button:hover{
+    background:#145017;
+}
+
 /* FOOTER */
 footer{
     background:#1b5e20;
@@ -91,7 +95,6 @@ footer{
 
 /* RESPONSIVE */
 @media(max-width:768px){
-
     header{
         flex-direction:column;
         align-items:flex-start;
@@ -109,8 +112,6 @@ footer{
         gap:30px;
     }
 }
-
-
 </style>
 
 </head>
@@ -118,33 +119,22 @@ footer{
 <body>
 
 <!-- HEADER -->
-
-
-<header class="main-header">
-
-  <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
-    
-    <!-- LOGO -->
-    <img src="agricultural logo.png" 
+<header>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <img src="agricultural logo.png"
          style="width:50px; height:50px; border-radius:50%; background:white; padding:5px;">
-
-    <!-- TITLE -->
     <h1 style="margin:0;">RW-Rulindo Agro Market</h1>
-
   </div>
 
-  <!-- MENU ONLY -->
-  <nav class="menu">
-<a href="index.html">Home</a>
-<a href="login2.html">Login</a>
-<p><a href="sign up.html">sign up</a></p>
-<a href="productshop.html">Shop</a>
-<a href="service.html">Services</a>
-<a href="checkautform.html">Orders</a>
-<a href="contact.html">Contact</a>
-
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login2.html">Login</a>
+    <a href="sign up.html">Sign Up</a>
+    <a href="productshop.html">Shop</a>
+    <a href="service.html">Services</a>
+    <a href="checkautform.html">Orders</a>
+    <a href="contact.html">Contact</a>
   </nav>
-
 </header>
 
 <!-- MAIN -->
@@ -157,23 +147,26 @@ footer{
 </button>
 
 <h2 style="text-align:center; color:#1b5e20;">
-Sign up
+Sign Up
 </h2>
 
 <input type="text" id="regUser" placeholder="Username">
 <input type="password" id="regPass" placeholder="Password">
-
-<button onclick="register()">
-Register
+<a href="farmer upload.html">
+<button onclick="login()">
+login
 </button>
+</a>
 
+
+<!-- FORGOT PASSWORD -->
 <p style="text-align:center;">
-<a href="forgot.html">Forgot Password?</a>
+<a href="forget password.html">Forgot Password?</a>
 </p>
 
 <p style="text-align:center;">
 Already have an account?
-<a href="login.html">Login</a>
+<a href="sign up.html">register</a>
 </p>
 
 </div>
@@ -189,26 +182,25 @@ Already have an account?
 Trusted agricultural marketplace
 </p>
 
-<!-- SOCIAL ICONS -->
 <div style="margin-top:10px; display:flex; gap:10px;">
 
 <a href="https://facebook.com" target="_blank"
-style="padding:10px; background:#3b5998; color:white; border-radius:50%; display:inline-block;">
+style="padding:10px; background:#3b5998; color:white; border-radius:50%;">
 <i class="fa-brands fa-facebook-f"></i>
 </a>
 
 <a href="https://instagram.com" target="_blank"
-style="padding:10px; background:#E1306C; color:white; border-radius:50%; display:inline-block;">
+style="padding:10px; background:#E1306C; color:white; border-radius:50%;">
 <i class="fa-brands fa-instagram"></i>
 </a>
 
 <a href="https://twitter.com" target="_blank"
-style="padding:10px; background:#1DA1F2; color:white; border-radius:50%; display:inline-block;">
+style="padding:10px; background:#1DA1F2; color:white; border-radius:50%;">
 <i class="fa-brands fa-twitter"></i>
 </a>
 
 <a href="https://wa.me/250735907160" target="_blank"
-style="padding:10px; background:#25D366; color:white; border-radius:50%; display:inline-block;">
+style="padding:10px; background:#25D366; color:white; border-radius:50%;">
 <i class="fa-brands fa-whatsapp"></i>
 </a>
 
@@ -225,17 +217,21 @@ style="padding:10px; background:#25D366; color:white; border-radius:50%; display
 </footer>
 
 <script>
+// REGISTER FUNCTION
 function register() {
     let user = document.getElementById("regUser").value;
     let pass = document.getElementById("regPass").value;
 
     if(user === "" || pass === "") {
         alert("Please fill all fields!");
-    } else {
-        localStorage.setItem("user", user);
-        alert("Registration successful!");
-        window.location.href = "login.html";
+        return;
     }
+
+    localStorage.setItem("user", user);
+    localStorage.setItem("pass", pass);
+
+    alert("Registration successful!");
+    window.location.href = "login2.html";
 }
 </script>
 
