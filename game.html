@@ -2,254 +2,286 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>RW-Rulindo Agro Market Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agro Game</title>
 
 <style>
+
 body{
-    margin:0;
-    font-family:Arial;
-    background:#e8f5e9;
+font-family:Arial;
+background:#e8f5e9;
+text-align:center;
+margin:0;
+padding:0;
 }
 
-/* ===== HEADER ===== */
-header{
-    background:#1b5e20;
-    color:white;
-    padding:10px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
+/* SCREEN */
+.screen{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:#1b5e20;
+color:white;
+z-index:10;
 }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.logo img{
-    width:60px;
-    height:60px;
-    border-radius:50%;
-}
-
-.logo h1{
-    font-size:18px;
-    margin:0;
-}
-
-.logo p{
-    margin:0;
-    font-size:12px;
-    color:#c8e6c9;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:0 10px;
-    padding:6px 10px;
-    border-radius:5px;
-}
-
-nav a:hover,
-nav a.active{
-    background:#66bb6a;
+/* HIDDEN */
+.hidden{
+display:none;
 }
 
 /* GAME AREA */
-.game-container{
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-items:center;
-    padding-top:40px;
-    margin-bottom:80px; /* 🟢 space hagati ya game na footer */
+.game{
+padding:20px;
 }
 
-canvas{
-    background:#c8e6c9;
-    border:4px solid #2e7d32;
-    margin-top:20px;
+/* FIELD */
+.field{
+display:grid;
+grid-template-columns:repeat(3,120px);
+gap:15px;
+justify-content:center;
+margin-top:20px;
 }
+
+/* PLOT */
+.plot{
+width:120px;
+height:120px;
+background:#8d6e63;
+border-radius:10px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-weight:bold;
+cursor:pointer;
+user-select:none;
+transition:0.3s;
+}
+
+.plot:hover{transform:scale(1.05);}
+
+.seed{background:#6d4c41;}
+.growing{background:#66bb6a;}
+.ready{background:#2e7d32;}
 
 button{
-    margin-top:10px;
-    padding:10px 20px;
-    background:#2e7d32;
-    color:white;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
+padding:10px 15px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+font-weight:bold;
 }
+
+/* BUTTON COLORS */
+.startBtn{background:#ffffff;color:#1b5e20;}
+.restartBtn{background:#ffffff;color:#1b5e20;}
+
+.score{
+font-size:20px;
+font-weight:bold;
+margin-top:10px;
+color:#1b5e20;
+}
+
 </style>
 </head>
 
 <body>
-
-<!-- ===== HEADER ===== -->
+    <!-- HEADER -->
 <header>
 
 <div class="logo">
 <img src="agricultural logo.png">
+
 <div>
-<h1>RW-Rulindo Agro Market</h1>
-<p>Welcome to market for crops and agricultural products</p>
+<h1 id="logoTitle">RW-Rulindo Agro Market</h1>
+<p id="logoDesc">Welcome to agricultural market</p>
 </div>
+
 </div>
 
 <nav>
-<a href="index.html" class="active">Home</a>
-<a href="login2.html">Login</a>
-<a href="sign up.html">sign up</a>
-<a href="productshop.html">Shop</a>
-<a href="service.html">Services</a>
-<a href="checkautform.html">Orders</a>
-<a href="contact.html">Contact</a>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login2.html">Login</a>
+    <a href="sign up.html">Sign Up</a>
+    <a href="productshop.html">Shop</a>
+    <a href="service.html">Services</a>
+    <a href="checkautform.html">Orders</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+<select id="languageSwitcher" onchange="changeLanguage()">
+<option value="en">ENGLISH</option>
+<option value="rw">KINYARWANDA</option>
+<option value="fr">FRANCAIS</option>
+</select>
+
+<button onclick="toggleMode()">🌙</button>
+
 </nav>
 
 </header>
 
-<!-- ===== GAME ===== -->
-<div class="game-container">
+<!-- START SCREEN -->
+<div class="screen" id="startScreen">
+<h1>🌱 Agro Farming Game</h1>
+<p>Plant → Grow → Harvest</p>
+<button class="startBtn" onclick="startGame()">START GAME</button>
+</div>
 
-<h2>🐍 Agro Business Snake Game 🌾💰</h2>
+<!-- GAME OVER -->
+<div class="screen hidden" id="gameOverScreen">
+<h1>💀 GAME OVER</h1>
+<p>Your Score: <span id="finalScore">0</span></p>
+<button class="restartBtn" onclick="restartGame()">RESTART</button>
+</div>
 
-<canvas id="game" width="400" height="400"></canvas>
+<!-- GAME -->
+<div class="game">
 
-<button onclick="restartGame()">🔄 start game</button>
+<h2>🌱 Farming Game</h2>
+
+<div class="score">Score: <span id="score">0</span></div>
+
+<button onclick="triggerGameOver()">End Game</button>
+
+<div class="field">
+
+<div class="plot" onclick="grow(this)">Plant</div>
+<div class="plot" onclick="grow(this)">Plant</div>
+<div class="plot" onclick="grow(this)">Plant</div>
+
+<div class="plot" onclick="grow(this)">Plant</div>
+<div class="plot" onclick="grow(this)">Plant</div>
+<div class="plot" onclick="grow(this)">Plant</div>
 
 </div>
 
-<script>
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
+</div>
 
-let box = 20;
-let score, money, snake, direction, food, game;
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3d2c1b3c2d.mp3">
+</audio>
 
-const products = ["🌽","🥕","🍅","🥔"];
+<footer class="footer">
 
-function init(){
-    score = 0;
-    money = 0;
-    snake = [{x:9*box, y:9*box}];
-    direction = "RIGHT";
-    food = randomFood();
+<div class="footer-grid">
 
-    if(game) clearInterval(game);
-    game = setInterval(drawGame, 200); // 🐌 slow speed
-}
+    <!-- LEFT -->
+    <div class="footer-box">
+        <h3>RW-Rulindo Agro Market</h3>
+        <p>We connect farmers and buyers across Rwanda</p>
+    </div>
 
-document.addEventListener("keydown", changeDir);
+    <!-- MIDDLE -->
+    <div class="footer-box">
+        <h3>Quick Links</h3>
+        <a href="#">Home</a>
+        <a href="#">Login</a>
+        <a href="#">Shop</a>
+        <a href="#">Services</a>
+        <a href="#">Order</a>
+        <a href="#">Contact</a>
+    </div>
 
-function changeDir(e){
-    if(e.keyCode == 37 && direction != "RIGHT") direction = "LEFT";
-    if(e.keyCode == 38 && direction != "DOWN") direction = "UP";
-    if(e.keyCode == 39 && direction != "LEFT") direction = "RIGHT";
-    if(e.keyCode == 40 && direction != "UP") direction = "DOWN";
-}
+    <!-- RIGHT -->
+    <div class="footer-box">
+        <h3>Follow Us</h3>
 
-function randomFood(){
-    return {
-        x: Math.floor(Math.random()*19)*box,
-        y: Math.floor(Math.random()*19)*box,
-        icon: products[Math.floor(Math.random()*products.length)]
-    };
-}
+        <div class="social">
+            <a href="#" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
 
-function drawGame(){
+    </div>
 
-    ctx.fillStyle = "#c8e6c9";
-    ctx.fillRect(0,0,400,400);
-
-    ctx.font = "20px Arial";
-    ctx.fillText(food.icon, food.x, food.y + 18);
-
-    for(let i=0;i<snake.length;i++){
-        ctx.fillStyle = i==0 ? "#2e7d32" : "#66bb6a";
-        ctx.fillRect(snake[i].x, snake[i].y, box, box);
-    }
-
-    let headX = snake[0].x;
-    let headY = snake[0].y;
-
-    if(direction == "LEFT") headX -= box;
-    if(direction == "RIGHT") headX += box;
-    if(direction == "UP") headY -= box;
-    if(direction == "DOWN") headY += box;
-
-    if(headX == food.x && headY == food.y){
-        score++;
-        money += 100;
-        food = randomFood();
-    } else {
-        snake.pop();
-    }
-
-    let newHead = {x:headX, y:headY};
-
-    if(headX < 0 || headY < 0 || headX >= 400 || headY >= 400 || collision(newHead, snake)){
-        clearInterval(game);
-        alert("Game Over 🌾\nScore: " + score + "\nProfit: " + money + " RWF 💰");
-    }
-
-    snake.unshift(newHead);
-
-    ctx.fillStyle = "#1b5e20";
-    ctx.fillText("Score: " + score, 10, 390);
-    ctx.fillText("💰 " + money + " RWF", 220, 390);
-}
-
-function collision(head, array){
-    for(let i=0;i<array.length;i++){
-        if(head.x == array[i].x && head.y == array[i].y){
-            return true;
-        }
-    }
-    return false;
-}
-
-function restartGame(){
-    init();
-}
-
-init();
-</script>
-
-<!-- ===== FOOTER ===== -->
-<footer style="background:#2e7d32; color:white; text-align:center; padding:20px;">
-
-  <p>Follow Us</p>
-
-  <div style="margin-top:10px;">
-
-    <a href="https://facebook.com" target="_blank"
-       style="margin:5px; padding:12px; background:#3b5998; color:white; border-radius:50%; display:inline-block;">
-      <i class="fa-brands fa-facebook-f"></i>
-    </a>
-
-    <a href="https://instagram.com" target="_blank"
-       style="margin:5px; padding:12px; background:#E1306C; color:white; border-radius:50%; display:inline-block;">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-
-    <a href="https://twitter.com" target="_blank"
-       style="margin:5px; padding:12px; background:#1DA1F2; color:white; border-radius:50%; display:inline-block;">
-      <i class="fa-brands fa-x-twitter"></i>
-    </a>
-
-    <a href="https://wa.me/250735907160" target="_blank"
-       style="margin:5px; padding:12px; background:#25D366; color:white; border-radius:50%; display:inline-block;">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-  </div>
-
-  <p style="margin-top:10px;">© 2026 RW-Rulindo Agro Market</p>
+</div>
 
 </footer>
+
+<script>
+
+let score = 0;
+let musicStarted = false;
+
+/* START GAME */
+function startGame(){
+document.getElementById("startScreen").classList.add("hidden");
+document.getElementById("bgMusic").play();
+musicStarted = true;
+}
+
+/* GAME OVER */
+function triggerGameOver(){
+document.getElementById("gameOverScreen").classList.remove("hidden");
+document.getElementById("finalScore").innerText = score;
+}
+
+/* RESTART */
+function restartGame(){
+location.reload();
+}
+
+/* GAME LOGIC */
+function grow(plot){
+
+if(!musicStarted){
+document.getElementById("bgMusic").play();
+musicStarted = true;
+}
+
+/* PLANT */
+if(!plot.classList.contains("seed") &&
+   !plot.classList.contains("growing") &&
+   !plot.classList.contains("ready")){
+
+plot.classList.add("seed");
+plot.innerText = "🌱 Seed";
+
+setTimeout(()=>{
+plot.classList.remove("seed");
+plot.classList.add("growing");
+plot.innerText = "🌿 Growing";
+
+setTimeout(()=>{
+plot.classList.remove("growing");
+plot.classList.add("ready");
+plot.innerText = "🌾 Harvest";
+
+},3000);
+
+},2000);
+
+}
+
+/* HARVEST */
+else if(plot.classList.contains("ready")){
+
+plot.classList.remove("ready");
+plot.innerText = "Plant";
+
+score += 10;
+document.getElementById("score").innerText = score;
+
+}
+
+}
+
+</script>
 
 </body>
 </html>

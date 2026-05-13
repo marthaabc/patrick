@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Farmer Upload Product - RW Agro Market</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* BODY */
+body{
+margin:0;
+font-family:Arial;
+background:#e8f5e9;
+}
+
+/* HEADER */
+header{
+background:#1b5e20;
+color:white;
+padding:15px;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.header-container{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+}
+
+/* LOGO */
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo img{
+width:60px;
+height:60px;
+border-radius:10px;
+background:white;
+object-fit:cover;
+}
+
+.logo h1{
+margin:0;
+font-size:20px;
+}
+
+/* NAV */
+nav{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+padding:6px 10px;
+border-radius:5px;
+}
+
+nav a:hover{
+background:rgba(255,255,255,0.2);
+}
+
+/* CONTAINER */
+.container{
+width:90%;
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+/* CARD */
+.card{
+background:white;
+padding:20px;
+margin-top:20px;
+border-left:6px solid #2e7d32;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+h2{
+color:#1b5e20;
+}
+
+/* INPUTS */
+input, textarea, select{
+width:100%;
+padding:10px;
+margin-top:10px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+/* IMAGE */
+#preview{
+width:100%;
+max-height:250px;
+object-fit:cover;
+margin-top:10px;
+border-radius:10px;
+display:none;
+}
+
+/* BUTTON */
+button{
+background:#2e7d32;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#1b5e20;
+}
+
+/* VIEW ORDERS BUTTON */
+.green-btn{
+background:#2e7d32;
+color:white;
+padding:14px 28px;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+text-decoration:none;
+display:inline-block;
+transition:0.3s;
+margin-top:20px;
+}
+
+.green-btn:hover{
+background:#1b5e20;
+transform:scale(1.05);
+}
+
+/* FOOTER */
+footer{
+background:#1b5e20;
+color:white;
+padding:30px 15px;
+margin-top:40px;
+}
+
+.footer-grid{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+gap:20px;
+}
+
+.footer-grid a{
+color:white;
+text-decoration:none;
+display:block;
+margin:5px 0;
+}
+
+.footer-grid a:hover{
+text-decoration:underline;
+}
+
+/* SOCIAL */
+.social{
+display:flex;
+gap:10px;
+margin-top:10px;
+
+}
+
+.social a{
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+background:rgba(255,255,255,0.2);
+color:white;
+text-decoration:none;
+}
+
+.social a:hover{
+background:white;
+color:#1b5e20;
+}
+
+/* BOTTOM */
+.bottom{
+text-align:center;
+margin-top:20px;
+font-size:14px;
+opacity:0.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+<div class="header-container">
+
+<div class="logo">
+<img src="agricultural logo.png">
+<h1>RW-Rulindo Agro Market</h1>
+</div>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="login2.html">Login</a>
+<a href="productshop.html">Shop</a>
+<a href="service.html">Services</a>
+<a href="checkautform.html">Orders</a>
+<a href="contact.html">Contact</a>
+<a href="sign up.html">Sign Up</a>
+</nav>
+
+</div>
+
+</header>
+
+<!-- CONTENT -->
+<div class="container">
+
+<!-- PRODUCT FORM -->
+<div class="card">
+<h2>📦 Product Details</h2>
+
+<input type="text" id="name" placeholder="Product Name">
+<textarea id="desc" rows="3" placeholder="Product Description"></textarea>
+
+<input type="number" id="price" placeholder="Price per kg (RWF)">
+<input type="number" id="qty" placeholder="Quantity available (kg)">
+
+<select id="category">
+<option>Grains 🌾</option>
+<option>Vegetables 🥕</option>
+<option>Fruits 🍎</option>
+<option>Other</option>
+</select>
+
+<input type="text" id="location" placeholder="Location (District)">
+</div>
+
+<!-- IMAGE -->
+<div class="card">
+<h2>📸 Upload Image</h2>
+
+<input type="file" accept="image/*" onchange="previewImage(event)">
+<img id="preview">
+</div>
+
+<!-- SUBMIT -->
+<div class="card">
+<h2>🚀 Submit Product</h2>
+<button onclick="submitProduct()">Upload Product</button>
+
+<br>
+
+
+
+
+</div>
+
+</div>
+
+<!-- VIEW ORDERS BUTTON -->
+<a href="view order.html" class="green-btn">
+View Orders
+</a>
+
+<!-- FOOTER -->
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<h3>RW-Rulindo Agro Market</h3>
+<p>We connect farmers and buyers across Rwanda.</p>
+</div>
+
+<div>
+<h3>Quick Links</h3>
+<a href="index.html">Home</a>
+<a href="login2.html">Login</a>
+<a href="productshop.html">Shop</a>
+<a href="service.html">Services</a>
+<a href="checkautform.html">Orders</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div>
+<h3>Follow Us</h3>
+
+<div class="social">
+<a href="https://facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+<a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
+<a href="https://wa.me/250788123456"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
+</div>
+
+</div>
+
+<div class="bottom">
+© 2026 RW-Rulindo Agro Market 🌾
+</div>
+
+</footer>
+
+<script>
+
+// IMAGE PREVIEW
+function previewImage(event){
+let image = document.getElementById("preview");
+image.src = URL.createObjectURL(event.target.files[0]);
+image.style.display = "block";
+}
+function submitProduct(){
+
+let name = document.getElementById("name").value;
+let desc = document.getElementById("desc").value;
+let price = document.getElementById("price").value;
+let qty = document.getElementById("qty").value;
+let category = document.getElementById("category").value;
+let location = document.getElementById("location").value;
+
+if(name === ""){
+alert("❌ Please fill product name");
+return;
+}
+
+let product = {
+name,
+desc,
+price,
+qty,
+category,
+location
+};
+
+localStorage.setItem("product", JSON.stringify(product));
+
+alert("✅ Product uploaded successfully!");
+
+}
+// SUBMIT
+function submitProduct(){
+let name = document.getElementById("name").value;
+
+if(name === ""){
+alert("❌ Please fill product name");
+return;
+}
+
+alert("✅ Product uploaded successfully!");
+}
+
+</script>
+
+</body>
+</html>
