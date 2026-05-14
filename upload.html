@@ -337,34 +337,7 @@ let image = document.getElementById("preview");
 image.src = URL.createObjectURL(event.target.files[0]);
 image.style.display = "block";
 }
-function submitProduct(){
 
-let name = document.getElementById("name").value;
-let desc = document.getElementById("desc").value;
-let price = document.getElementById("price").value;
-let qty = document.getElementById("qty").value;
-let category = document.getElementById("category").value;
-let location = document.getElementById("location").value;
-
-if(name === ""){
-alert("❌ Please fill product name");
-return;
-}
-
-let product = {
-name,
-desc,
-price,
-qty,
-category,
-location
-};
-
-localStorage.setItem("product", JSON.stringify(product));
-
-alert("✅ Product uploaded successfully!");
-
-}
 // SUBMIT
 function submitProduct(){
 let name = document.getElementById("name").value;
