@@ -1,117 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register - Agro Market</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<title>Login - RW Rulindo Agro Market</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/* BODY */
 body{
-    margin:0;
-    font-family:Arial;
-    background:#f5f5f5;
-    display:flex;
-    flex-direction:column;
-    min-height:100vh;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+/* DARK MODE */
+body.dark{
+background:#111;
+color:white;
 }
 
 /* HEADER */
 header{
-    background:#1b5e20;
-    color:white;
-    padding:30px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
+background:linear-gradient(90deg,#1b5e20,#2e7d32);
+padding:15px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+color:white;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:60px;
+height:60px;
+border-radius:50%;
+background:white;
+padding:5px;
+}
+
+#logoTitle{
+font-size:28px;
+}
+
+#logoDesc{
+font-size:14px;
+color:#d7d7d7;
 }
 
 /* NAV */
 nav{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    flex-wrap:wrap;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
 }
 
 nav a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
+text-decoration:none;
+color:white;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#c8e6c9;
+}
+
+/* RIGHT */
+.right-controls{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+#languageSwitcher{
+padding:10px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.dark-btn{
+background:none;
+border:none;
+color:white;
+font-size:22px;
+cursor:pointer;
 }
 
 /* MAIN */
 main{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:30px 15px;
 }
 
-/* FORM */
+/* LOGIN BOX */
 .form-box{
-    width:100%;
-    max-width:350px;
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+width:100%;
+max-width:400px;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+body.dark .form-box{
+background:#222;
+color:white;
+}
+
+.form-box h2{
+text-align:center;
+margin-bottom:20px;
+color:#1b5e20;
 }
 
 /* INPUTS */
-input, button{
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    border-radius:5px;
-    border:1px solid #ccc;
-    box-sizing:border-box;
+input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+outline:none;
+}
+
+input:focus{
+border-color:#2e7d32;
 }
 
 /* BUTTON */
 button{
-    background:#1b5e20;
-    color:white;
-    border:none;
-    cursor:pointer;
+width:100%;
+padding:14px;
+background:#2e7d32;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
-    background:#145017;
+background:#1b5e20;
+}
+
+/* LINKS */
+.form-links{
+text-align:center;
+margin-top:15px;
+}
+
+.form-links a{
+text-decoration:none;
+color:#1b5e20;
+font-weight:bold;
 }
 
 /* FOOTER */
 footer{
-    background:#1b5e20;
-    color:white;
-    padding:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
+background:#1b5e20;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:20px;
 }
 
-/* RESPONSIVE */
+.social{
+display:flex;
+gap:10px;
+}
+
+.social a{
+width:40px;
+height:40px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+color:white;
+text-decoration:none;
+}
+
+.facebook{background:#3b5998;}
+.instagram{background:#E1306C;}
+.twitter{background:#1DA1F2;}
+.whatsapp{background:#25D366;}
+
+/* MOBILE */
 @media(max-width:768px){
-    header{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-    }
 
-    nav{
-        width:100%;
-        justify-content:center;
-    }
-
-    footer{
-        flex-direction:column;
-        text-align:center;
-        gap:30px;
-    }
+header{
+flex-direction:column;
+gap:15px;
 }
+
+nav{
+justify-content:center;
+}
+
+footer{
+flex-direction:column;
+text-align:center;
+}
+
+}
+
 </style>
 
 </head>
@@ -120,21 +246,50 @@ footer{
 
 <!-- HEADER -->
 <header>
-  <div style="display:flex; align-items:center; gap:10px;">
-    <img src="agricultural logo.png"
-         style="width:50px; height:50px; border-radius:50%; background:white; padding:5px;">
-    <h1 style="margin:0;">RW-Rulindo Agro Market</h1>
-  </div>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="login2.html">Login</a>
-    <a href="sign up.html">Sign Up</a>
-    <a href="productshop.html">Shop</a>
-    <a href="service.html">Services</a>
-    <a href="checkautform.html">Orders</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<div class="logo">
+
+<img src="ange.png">
+
+<div>
+<h1 id="logoTitle">RW-Rulindo Agro Market</h1>
+<p id="logoDesc">Welcome to agricultural market</p>
+</div>
+
+</div>
+
+<nav>
+
+<a id="navHome" href="index.html">Home</a>
+<a id="navLogin" href="login2.html">Login</a>
+<a id="navSignup" href="sign up.html">Sign Up</a>
+<a id="navShop" href="productshop.html">Shop</a>
+<a id="navServices" href="service.html">Services</a>
+<a id="navOrders" href="checkautform.html">Orders</a>
+<a id="navContact" href="contact.html">Contact</a>
+
+</nav>
+
+<div class="right-controls">
+
+<select id="languageSwitcher"
+onchange="changeLanguage()">
+
+<option value="en">ENGLISH</option>
+<option value="rw">KINYARWANDA</option>
+<option value="fr">FRANÇAIS</option>
+
+</select>
+
+<button class="dark-btn"
+onclick="toggleMode()">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+</div>
+
 </header>
 
 <!-- MAIN -->
@@ -142,32 +297,41 @@ footer{
 
 <div class="form-box">
 
-<button onclick="history.back()" style="background:gray;">
-⬅ Back
-</button>
-
-<h2 style="text-align:center; color:#1b5e20;">
-Sign Up
+<h2 id="loginTitle">
+Farmer Login
 </h2>
 
-<input type="text" id="regUser" placeholder="Username">
-<input type="password" id="regPass" placeholder="Password">
-<a href="farmer upload.html">
+<input type="text"
+id="regUser"
+placeholder="Enter Username">
+
+<input type="password"
+id="regPass"
+placeholder="Enter Password">
+
 <button onclick="login()">
-login
+Login
 </button>
+
+<div class="form-links">
+
+<p style="margin-top:15px;">
+<a href="forget password.html">
+Forgot Password?
+</a>
+</p>
+
+<p style="margin-top:10px;">
+
+Don't have account?
+
+<a href="sign up.html">
+Register
 </a>
 
-
-<!-- FORGOT PASSWORD -->
-<p style="text-align:center;">
-<a href="forget password.html">Forgot Password?</a>
 </p>
 
-<p style="text-align:center;">
-Already have an account?
-<a href="sign up.html">register</a>
-</p>
+</div>
 
 </div>
 
@@ -177,62 +341,219 @@ Already have an account?
 <footer>
 
 <div>
-<h3 style="margin:0;">RW-Rulindo Agro Market</h3>
-<p style="margin:5px 0; font-size:13px;">
+
+<h3>
+RW-Rulindo Agro Market
+</h3>
+
+<p>
 Trusted agricultural marketplace
 </p>
 
-<div style="margin-top:10px; display:flex; gap:10px;">
+</div>
 
-<a href="https://facebook.com" target="_blank"
-style="padding:10px; background:#3b5998; color:white; border-radius:50%;">
+<div class="social">
+
+<a href="https://facebook.com"
+class="facebook">
 <i class="fa-brands fa-facebook-f"></i>
 </a>
 
-<a href="https://instagram.com" target="_blank"
-style="padding:10px; background:#E1306C; color:white; border-radius:50%;">
+<a href="https://instagram.com"
+class="instagram">
 <i class="fa-brands fa-instagram"></i>
 </a>
 
-<a href="https://twitter.com" target="_blank"
-style="padding:10px; background:#1DA1F2; color:white; border-radius:50%;">
+<a href="https://twitter.com"
+class="twitter">
 <i class="fa-brands fa-twitter"></i>
 </a>
 
-<a href="https://wa.me/250735907160" target="_blank"
-style="padding:10px; background:#25D366; color:white; border-radius:50%;">
+<a href="https://wa.me/250735907160"
+class="whatsapp">
 <i class="fa-brands fa-whatsapp"></i>
 </a>
 
 </div>
 
-</div>
-
 <div>
+
 <p>Email: info@agromarket.rw</p>
 <p>Tel: +250 735 907 160</p>
 <p>© 2026 All Rights Reserved</p>
+
 </div>
 
 </footer>
 
 <script>
-// REGISTER FUNCTION
-function register() {
-    let user = document.getElementById("regUser").value;
-    let pass = document.getElementById("regPass").value;
 
-    if(user === "" || pass === "") {
-        alert("Please fill all fields!");
-        return;
-    }
+/* DARK MODE */
 
-    localStorage.setItem("user", user);
-    localStorage.setItem("pass", pass);
+function toggleMode(){
 
-    alert("Registration successful!");
-    window.location.href = "login2.html";
+document.body.classList.toggle("dark");
+
+let icon =
+document.querySelector(".dark-btn i");
+
+if(document.body.classList.contains("dark")){
+
+icon.classList.remove("fa-moon");
+icon.classList.add("fa-sun");
+
+localStorage.setItem("theme","dark");
+
 }
+else{
+
+icon.classList.remove("fa-sun");
+icon.classList.add("fa-moon");
+
+localStorage.setItem("theme","light");
+
+}
+
+}
+
+/* LOAD THEME */
+
+if(localStorage.getItem("theme") === "dark"){
+
+document.body.classList.add("dark");
+
+let icon =
+document.querySelector(".dark-btn i");
+
+icon.classList.remove("fa-moon");
+icon.classList.add("fa-sun");
+
+}
+
+/* LANGUAGE */
+
+function changeLanguage(){
+
+let lang =
+document.getElementById("languageSwitcher").value;
+
+if(lang === "rw"){
+
+document.getElementById("logoTitle").innerText =
+"Isoko Ry'Ubuhinzi RW-Rulindo";
+
+document.getElementById("logoDesc").innerText =
+"Murakaza neza";
+
+document.getElementById("loginTitle").innerText =
+"Kwinjira";
+
+document.getElementById("navHome").innerText =
+"Ahabanza";
+
+document.getElementById("navLogin").innerText =
+"Kwinjira";
+
+document.getElementById("navSignup").innerText =
+"Kwiyandikisha";
+
+document.getElementById("navShop").innerText =
+"Iduka";
+
+document.getElementById("navServices").innerText =
+"Serivisi";
+
+document.getElementById("navOrders").innerText =
+"Commande";
+
+document.getElementById("navContact").innerText =
+"Twandikire";
+
+}
+
+else if(lang === "fr"){
+
+document.getElementById("logoTitle").innerText =
+"Marché Agricole RW-Rulindo";
+
+document.getElementById("logoDesc").innerText =
+"Bienvenue au marché agricole";
+
+document.getElementById("loginTitle").innerText =
+"Connexion";
+
+document.getElementById("navHome").innerText =
+"Accueil";
+
+document.getElementById("navLogin").innerText =
+"Connexion";
+
+document.getElementById("navSignup").innerText =
+"Inscription";
+
+document.getElementById("navShop").innerText =
+"Boutique";
+
+document.getElementById("navServices").innerText =
+"Services";
+
+document.getElementById("navOrders").innerText =
+"Commandes";
+
+document.getElementById("navContact").innerText =
+"Contact";
+
+}
+
+else{
+
+location.reload();
+
+}
+
+}
+
+/* LOGIN FUNCTION */
+
+function login(){
+
+let user =
+document.getElementById("regUser").value;
+
+let pass =
+document.getElementById("regPass").value;
+
+if(user === "" || pass === ""){
+
+alert("❌ Please fill all fields!");
+
+return;
+
+}
+
+/* SAVE USER */
+
+localStorage.setItem(
+"farmerName",
+user
+);
+
+localStorage.setItem(
+"userPassword",
+pass
+);
+
+/* SUCCESS */
+
+alert("✅ Login successful");
+
+/* OPEN NEXT PAGE */
+
+window.location.href =
+"farmer upload.html";
+
+}
+
 </script>
 
 </body>

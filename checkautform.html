@@ -2,190 +2,492 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Order System</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/* BODY */
 body{
-    font-family: Arial;
-    background:#eaf7ea;
-    margin:0;
-    display:flex;
-    flex-direction:column;
-    min-height:100vh;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+transition:0.3s;
+color:#222;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* DARK MODE */
+body.dark{
+background:#111;
+color:white;
+}
+
+body.dark header{
+background:linear-gradient(90deg,#000,#222);
+}
+
+body.dark footer{
+background:#000;
+}
+
+body.dark .box{
+background:#222;
+color:white;
+}
+
+body.dark input,
+body.dark select{
+background:#333;
+color:white;
+border:1px solid #555;
 }
 
 /* HEADER */
 header{
-    background:#1b5e20;
-    color:white;
-    padding:40px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
+background:linear-gradient(90deg,#1b5e20,#2e7d32);
+padding:15px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+color:white;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+/* LOGO */
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo img{
+width:60px;
+height:60px;
+border-radius:50%;
+background:white;
+padding:5px;
+object-fit:cover;
+}
+
+#logoTitle{
+font-size:30px;
+}
+
+#logoDesc{
+font-size:14px;
+color:#d7d7d7;
 }
 
 /* NAV */
 nav{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    flex-wrap:wrap;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
 }
 
 nav a{
-    color:white;
-    text-decoration:none;
+text-decoration:none;
+color:white;
+font-weight:bold;
+transition:0.3s;
 }
 
-/* MAIN CENTER */
+nav a:hover{
+color:#c8e6c9;
+}
+
+/* RIGHT */
+.right-controls{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+#languageSwitcher{
+padding:10px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.dark-btn{
+background:none;
+border:none;
+color:white;
+font-size:24px;
+cursor:pointer;
+}
+
+/* MAIN */
 .main{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex:1;
-    padding:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+flex:1;
+padding:20px;
 }
 
-/* BOXES */
+/* BOX */
 .box{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    width:100%;
-    max-width:320px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+background:white;
+padding:25px;
+border-radius:12px;
+width:100%;
+max-width:350px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 /* INPUTS */
-input, select, button{
-    width:100%;
-    padding:10px;
-    margin:6px 0;
-    box-sizing:border-box;
+input,
+select,
+button{
+width:100%;
+padding:12px;
+margin:8px 0;
+border-radius:6px;
+font-size:15px;
+}
+
+input,
+select{
+border:1px solid #ccc;
+outline:none;
 }
 
 /* BUTTON */
 button{
-    background:#1b5e20;
-    color:white;
-    border:none;
-    cursor:pointer;
+background:#1b5e20;
+color:white;
+border:none;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+background:#2e7d32;
 }
 
 /* FOOTER */
 footer{
-    background:#1b5e20;
-    color:white;
-    padding:20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
+background:#1b5e20;
+color:white;
+padding:30px 20px;
+margin-top:auto;
 }
 
-/* 📱 RESPONSIVE */
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.footer-grid h3{
+margin-bottom:10px;
+}
+
+.footer-grid a{
+display:block;
+color:#d7f5d9;
+text-decoration:none;
+margin:6px 0;
+}
+
+.footer-grid a:hover{
+color:white;
+}
+
+/* SOCIAL */
+.social{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.social a{
+width:40px;
+height:40px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+color:white;
+text-decoration:none;
+}
+
+.facebook{
+background:#3b5998;
+}
+
+.instagram{
+background:#E1306C;
+}
+
+.twitter{
+background:#1DA1F2;
+}
+
+.whatsapp{
+background:#25D366;
+}
+
+/* NEWSLETTER */
+.newsletter-form{
+margin-top:15px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+/* COPYRIGHT */
+.copyright{
+text-align:center;
+margin-top:20px;
+padding-top:15px;
+border-top:1px solid rgba(255,255,255,0.3);
+}
+
+/* MOBILE */
 @media(max-width:768px){
 
-    header{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-    }
-
-    nav{
-        width:100%;
-        justify-content:center;
-    }
-
-    footer{
-        flex-direction:column;
-        text-align:center;
-        gap:10px;
-    }
+header{
+flex-direction:column;
+gap:15px;
+text-align:center;
 }
-</style>
 
+nav{
+justify-content:center;
+}
+
+.right-controls{
+justify-content:center;
+}
+
+#logoTitle{
+font-size:24px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
+<header>
 
+<div class="logo">
 
-<header class="main-header">
+<img src="ange.png" alt="logo">
 
-  <div style="display:flex; align-items:center; justify-content:center; gap:10px;">
-    
-    <!-- LOGO -->
-    <img src="agricultural logo.png" 
-         style="width:50px; height:50px; border-radius:50%; background:white; padding:5px;">
+<div>
 
-    <!-- TITLE -->
-    <h1 style="margin:0;">RW-Rulindo Agro Market</h1>
+<h1 id="logoTitle">
+RW-Rulindo Agro Market
+</h1>
 
-  </div>
+<p id="logoDesc">
+Welcome to agricultural market
+</p>
 
-  <!-- MENU ONLY -->
-  <nav class="menu">
-     <a href="index.html">Home</a>
-<a href="login2.html">Login</a>
-<a href="sign up.html">sign up</a>
-<a href="productshop.html">Shop</a>  
-<a href="service.html">Services</a>
-<a href="checkautform.html">Orders</a>
-<a href="contact.html">Contact</a>
-  </nav>
+</div>
+
+</div>
+
+<!-- NAV -->
+<nav>
+
+<a id="navHome"
+href="index.html">
+Home
+</a>
+
+<a id="navLogin"
+href="login2.html">
+Login
+</a>
+
+<a id="navSignup"
+href="sign up.html">
+Sign Up
+</a>
+
+<a id="navShop"
+href="productshop.html">
+Shop
+</a>
+
+<a id="navServices"
+href="service.html">
+Services
+</a>
+
+<a id="navOrders"
+href="checkautform.html">
+Orders
+</a>
+
+<a id="navContact"
+href="contact.html">
+Contact
+</a>
+
+</nav>
+
+<!-- RIGHT -->
+<div class="right-controls">
+
+<select id="languageSwitcher"
+onchange="changeLanguage()">
+
+<option value="en">
+ENGLISH
+</option>
+
+<option value="rw">
+KINYARWANDA
+</option>
+
+<option value="fr">
+FRANÇAIS
+</option>
+
+</select>
+
+<button class="dark-btn"
+onclick="toggleMode()">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+</div>
 
 </header>
 
-
-
-
-<!-- BACK BUTTON -->
+<!-- BACK -->
 <div style="padding:15px;">
-<a href="index.html" 
-style="padding:10px 20px; background:#2e7d32; color:white; text-decoration:none; border-radius:5px;">
+
+<a href="index.html"
+style="
+padding:10px 20px;
+background:#2e7d32;
+color:white;
+text-decoration:none;
+border-radius:5px;">
+
 ⬅ Back to Home
+
 </a>
+
 </div>
 
 <!-- MAIN -->
 <div class="main">
 
-<!-- LOGIN BOX -->
-<div id="loginBox" class="box">
+<!-- LOGIN -->
+<div id="loginBox"
+class="box">
 
-<h2 style="text-align:center; color:#1b5e20;">Login</h2>
+<h2 style="
+text-align:center;
+color:#1b5e20;
+margin-bottom:20px;">
 
-<input id="username" type="text" placeholder="Enter Name">
+Login
 
-<button onclick="login()">Login</button>
+</h2>
+
+<input id="username"
+type="text"
+placeholder="Enter Name">
+
+<button onclick="login()">
+Login
+</button>
 
 </div>
 
-<!-- ORDER BOX -->
-<div id="orderBox" class="box" style="display:none;">
+<!-- ORDER -->
+<div id="orderBox"
+class="box"
+style="display:none;">
 
-<h2 style="text-align:center; color:hsla(124, 79%, 23%, 0.817);">Order Form</h2>
+<h2 style="
+text-align:center;
+color:#1b5e20;
+margin-bottom:20px;">
 
-<input type="text" placeholder="Customer Name">
-<input type="tel" placeholder="Phone Number">
-<input type="text" placeholder="Delivery Address">
-<input type="date">
+Order Form
 
-<select>
-<option>Select Payment Method</option>
-<option>Cash</option>
-<option>Mobile Money</option>
-<option>Card</option>
+</h2>
+
+<input type="text"
+id="customer"
+placeholder="Customer Name">
+
+<input type="tel"
+id="phone"
+maxlength="10"
+placeholder="Phone Number">
+
+<input type="text"
+id="address"
+placeholder="Delivery Address">
+
+<input type="date"
+id="date">
+
+<select id="payment">
+
+<option>
+Select Payment Method
+</option>
+
+<option>
+Cash
+</option>
+
+<option>
+Mobile Money
+</option>
+
+<option>
+Card
+</option>
+
 </select>
 
-<button onclick="submitOrder()">Submit</button>
+<button onclick="submitOrder()">
+Submit
+</button>
 
-<button onclick="logout()" style="background:hsla(127, 87%, 38%, 0.683); margin-top:10px;">
+<button onclick="logout()"
+style="
+background:#43a047;
+margin-top:10px;">
+
 Logout
+
 </button>
 
 </div>
@@ -193,100 +495,495 @@ Logout
 </div>
 
 <!-- FOOTER -->
-<footer style="background:#1b5e20; color:white; padding:20px; margin-top:auto;">
+<footer>
 
-<div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; align-items:flex-start;">
+<div class="footer-grid">
 
 <!-- BRAND -->
 <div>
-<h3>RW-Rulindo Agro Market</h3>
-<p>We connect farmers and buyers across Rwanda.</p>
+
+<h3>
+RW-Rulindo Agro Market
+</h3>
+
+<p>
+We connect farmers and buyers across Rwanda.
+</p>
+
 </div>
 
-<!-- LINKS (HORIZONTAL FIX) -->
+<!-- LINKS -->
 <div>
-<h3>Quick Links</h3>
 
-<div style="display:flex; gap:15px; flex-wrap:wrap; margin-top:10px;">
-<a href="index.html" style="color:#c8e6c9; text-decoration:none;">Home</a>
-<a href="login2.html" style="color:#c8e6c9; text-decoration:none;">Login</a>
-<a href="productshop.html" style="color:#c8e6c9; text-decoration:none;">Shop</a>
-<a href="service.html" style="color:#c8e6c9; text-decoration:none;">Service</a>
-<a href="checkautform.html" style="color:#c8e6c9; text-decoration:none;">Orders</a>
-<a href="contact.html" style="color:#c8e6c9; text-decoration:none;">Contact</a>
+<h3>
+Quick Links
+</h3>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="login2.html">
+Login
+</a>
+
+<a href="productshop.html">
+Shop
+</a>
+
+<a href="service.html">
+Service
+</a>
+
+<a href="checkautform.html">
+Orders
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
 </div>
 
-</div>
-
-<!-- SOCIAL ICONS -->
+<!-- SOCIAL -->
 <div>
-<h3>Follow Us</h3>
 
-<div style="margin-top:10px; display:flex; gap:10px;">
+<h3>
+Follow Us
+</h3>
 
-<a href="https://facebook.com" target="_blank"
-style="padding:10px; background:#3b5998; color:white; border-radius:50%; display:inline-block;">
+<div class="social">
+
+<a href="https://facebook.com"
+class="facebook"
+target="_blank">
+
 <i class="fa-brands fa-facebook-f"></i>
+
 </a>
 
-<a href="https://instagram.com" target="_blank"
-style="padding:10px; background:#E1306C; color:white; border-radius:50%; display:inline-block;">
+<a href="https://instagram.com"
+class="instagram"
+target="_blank">
+
 <i class="fa-brands fa-instagram"></i>
+
 </a>
 
-<a href="https://twitter.com" target="_blank"
-style="padding:10px; background:#1DA1F2; color:white; border-radius:50%; display:inline-block;">
+<a href="https://twitter.com"
+class="twitter"
+target="_blank">
+
 <i class="fa-brands fa-twitter"></i>
+
 </a>
 
-<a href="https://wa.me/0735 907 160" target="_blank"
-style="padding:10px; background:#25D366; color:white; border-radius:50%; display:inline-block;">
+<a href="https://wa.me/250735907160"
+class="whatsapp"
+target="_blank">
+
 <i class="fa-brands fa-whatsapp"></i>
+
 </a>
 
 </div>
 
+<!-- NEWSLETTER -->
+<form class="newsletter-form"
+onsubmit="subscribeUser(event)">
+
+<input
+type="email"
+id="emailInput"
+placeholder="Enter your email"
+required>
+
+<button type="submit"
+id="subscribeBtn">
+
+Subscribe
+
+</button>
+
+</form>
+
+<p id="subscribeMessage"></p>
+
 </div>
+
+</div>
+
+<!-- COPYRIGHT -->
+<div class="copyright">
+
+© 2026 RW-Rulindo Agro Market
 
 </div>
 
 </footer>
 
 <script>
-// LOGIN
-function login() {
-  let name = document.getElementById("username").value;
 
-  if(name === "") {
-    alert("Please enter your name");
-  } else {
-    localStorage.setItem("user", name);
-    showOrder();
-  }
+/* LOGIN */
+
+function login(){
+
+let name =
+document.getElementById("username")
+.value.trim();
+
+if(name === ""){
+
+alert("❌ Please enter your name");
+
+}
+else{
+
+localStorage.setItem(
+"user",
+name
+);
+
+showOrder();
+
 }
 
-// SHOW ORDER
-function showOrder() {
-  document.getElementById("loginBox").style.display = "none";
-  document.getElementById("orderBox").style.display = "block";
 }
 
-// LOGOUT
-function logout() {
-  localStorage.removeItem("user");
-  location.reload();
+/* SHOW ORDER */
+
+function showOrder(){
+
+document.getElementById("loginBox")
+.style.display = "none";
+
+document.getElementById("orderBox")
+.style.display = "block";
+
 }
 
-// SUBMIT ORDER
-function submitOrder() {
-  alert("Order submitted successfully!");
+/* LOGOUT */
+
+function logout(){
+
+localStorage.removeItem("user");
+
+location.reload();
+
 }
 
-// AUTO LOGIN
+/* SUBMIT ORDER */
+
+function submitOrder(){
+
+let customer =
+document.getElementById("customer")
+.value.trim();
+
+let phone =
+document.getElementById("phone")
+.value.trim();
+
+let address =
+document.getElementById("address")
+.value.trim();
+
+let date =
+document.getElementById("date")
+.value;
+
+let payment =
+document.getElementById("payment")
+.value;
+
+/* VALIDATION */
+
+if(
+customer === "" ||
+phone === "" ||
+address === "" ||
+date === "" ||
+payment === "Select Payment Method"
+){
+
+alert("❌ Fill all fields");
+return;
+
+}
+
+/* PHONE VALIDATION */
+
+if(phone.length !== 10){
+
+alert("❌ Phone number must contain 10 digits");
+return;
+
+}
+
+if(isNaN(phone)){
+
+alert("❌ Phone number must contain numbers only");
+return;
+
+}
+
+/* SAVE ORDERS */
+
+let orders =
+JSON.parse(localStorage.getItem("orders"))
+|| [];
+
+let order = {
+
+customer:customer,
+phone:phone,
+address:address,
+date:date,
+payment:payment
+
+};
+
+orders.push(order);
+
+localStorage.setItem(
+"orders",
+JSON.stringify(orders)
+);
+
+/* SUCCESS */
+
+alert("✅ Order submitted successfully");
+
+/* CLEAR */
+
+document.getElementById("customer")
+.value = "";
+
+document.getElementById("phone")
+.value = "";
+
+document.getElementById("address")
+.value = "";
+
+document.getElementById("date")
+.value = "";
+
+document.getElementById("payment")
+.selectedIndex = 0;
+
+}
+
+/* AUTO LOGIN */
+
 if(localStorage.getItem("user")){
-  showOrder();
+
+showOrder();
+
 }
+
+/* DARK MODE */
+
+function toggleMode(){
+
+document.body.classList.toggle("dark");
+
+let icon =
+document.querySelector(".dark-btn i");
+
+if(document.body.classList.contains("dark")){
+
+icon.classList.remove("fa-moon");
+icon.classList.add("fa-sun");
+
+localStorage.setItem(
+"theme",
+"dark"
+);
+
+}
+else{
+
+icon.classList.remove("fa-sun");
+icon.classList.add("fa-moon");
+
+localStorage.setItem(
+"theme",
+"light"
+);
+
+}
+
+}
+
+/* LOAD THEME */
+
+if(localStorage.getItem("theme")
+=== "dark"){
+
+document.body.classList.add("dark");
+
+let icon =
+document.querySelector(".dark-btn i");
+
+icon.classList.remove("fa-moon");
+icon.classList.add("fa-sun");
+
+}
+
+/* LANGUAGE */
+
+function changeLanguage(){
+
+let lang =
+document.getElementById("languageSwitcher")
+.value;
+
+/* FRENCH */
+
+if(lang === "fr"){
+
+document.documentElement.lang = "fr";
+
+document.getElementById("logoTitle")
+.innerText =
+"Marché Agricole RW-Rulindo";
+
+document.getElementById("logoDesc")
+.innerText =
+"Bienvenue au marché agricole";
+
+document.getElementById("navHome")
+.innerText =
+"Accueil";
+
+document.getElementById("navLogin")
+.innerText =
+"Connexion";
+
+document.getElementById("navSignup")
+.innerText =
+"Inscription";
+
+document.getElementById("navShop")
+.innerText =
+"Boutique";
+
+document.getElementById("navServices")
+.innerText =
+"Services";
+
+document.getElementById("navOrders")
+.innerText =
+"Commandes";
+
+document.getElementById("navContact")
+.innerText =
+"Contact";
+
+document.getElementById("subscribeBtn")
+.innerText =
+"S'abonner";
+
+document.getElementById("emailInput")
+.placeholder =
+"Entrez votre email";
+
+}
+
+/* KINYARWANDA */
+
+else if(lang === "rw"){
+
+document.documentElement.lang = "rw";
+
+document.getElementById("logoTitle")
+.innerText =
+"Isoko Ry'Ubuhinzi RW-Rulindo";
+
+document.getElementById("logoDesc")
+.innerText =
+"Murakaza neza";
+
+document.getElementById("navHome")
+.innerText =
+"Ahabanza";
+
+document.getElementById("navLogin")
+.innerText =
+"Kwinjira";
+
+document.getElementById("navSignup")
+.innerText =
+"Kwiyandikisha";
+
+document.getElementById("navShop")
+.innerText =
+"Iduka";
+
+document.getElementById("navServices")
+.innerText =
+"Serivisi";
+
+document.getElementById("navOrders")
+.innerText =
+"Commande";
+
+document.getElementById("navContact")
+.innerText =
+"Twandikire";
+
+document.getElementById("subscribeBtn")
+.innerText =
+"Kwiyandikisha";
+
+document.getElementById("emailInput")
+.placeholder =
+"Andika email";
+
+}
+
+/* ENGLISH */
+
+else{
+
+location.reload();
+
+}
+
+}
+
+/* SUBSCRIBE */
+
+function subscribeUser(event){
+
+event.preventDefault();
+
+let email =
+document.getElementById("emailInput")
+.value;
+
+let message =
+document.getElementById("subscribeMessage");
+
+if(email === ""){
+
+message.innerText =
+"Please enter email";
+
+}
+else{
+
+message.innerText =
+"✅ Subscribed successfully!";
+
+document.getElementById("emailInput")
+.value = "";
+
+}
+
+}
+
 </script>
 
 </body>
-</html>
+</html>5

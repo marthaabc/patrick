@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dark Mode Example</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* BODY */
+body{
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+color:black;
+transition:0.3s;
+}
+
+/* HEADER */
+header{
+background:#2e7d32;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+/* CONTENT */
+.container{
+padding:30px;
+text-align:center;
+}
+
+/* CARD */
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+max-width:400px;
+margin:auto;
+box-shadow:0 4px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+/* DARK BUTTON */
+.dark-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border:none;
+border-radius:50%;
+background:#2e7d32;
+color:white;
+font-size:22px;
+cursor:pointer;
+z-index:999;
+transition:0.3s;
+}
+
+.dark-btn:hover{
+background:#1b5e20;
+transform:scale(1.1);
+}
+
+/* DARK MODE */
+.dark{
+background:#121212;
+color:white;
+}
+
+.dark header{
+background:#111;
+}
+
+.dark .card{
+background:#222;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>RW-Rulindo Agro Market</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Welcome</h2>
+
+<p>
+This is a working dark mode example.
+</p>
+
+</div>
+
+</div>
+
+<!-- DARK MODE BUTTON -->
+
+<button class="dark-btn" onclick="toggleMode()">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+<script>
+
+/* DARK MODE FUNCTION */
+
+function toggleMode(){
+
+document.body.classList.toggle("dark");
+
+let icon = document.querySelector(".dark-btn i");
+
+if(document.body.classList.contains("dark")){
+
+icon.classList.remove("fa-moon");
+icon.classList.add("fa-sun");
+
+localStorage.setItem("darkMode","true");
+
+}
+else{
+
+icon.classList.remove("fa-sun");
+icon.classList.add("fa-moon");
+
+localStorage.setItem("darkMode","false");
+
+}
+
+}
+
+/* LOAD SAVED MODE */
+
+window.onload = function(){
+
+if(localStorage.getItem("darkMode") === "true"){
+
+document.body.classList.add("dark");
+
+let icon = document.querySelector(".dark-btn i");
+
+icon.classList.replace("fa-moon","fa-sun");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Farmer Upload Product - RW Agro Market</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 /* BODY */
 body{
-margin:0;
-font-family:Arial;
+font-family:Arial,sans-serif;
 background:#e8f5e9;
 }
 
 /* HEADER */
 header{
 background:#1b5e20;
-color:white;
-padding:15px;
+padding:15px 20px;
 position:sticky;
 top:0;
 z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,0.2);
 }
 
 .header-container{
-max-width:1100px;
+max-width:1200px;
 margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
 flex-wrap:wrap;
+gap:20px;
 }
 
 /* LOGO */
@@ -46,14 +55,15 @@ gap:12px;
 .logo img{
 width:60px;
 height:60px;
-border-radius:10px;
+border-radius:50%;
 background:white;
+padding:5px;
 object-fit:cover;
 }
 
 .logo h1{
-margin:0;
-font-size:20px;
+color:white;
+font-size:24px;
 }
 
 /* NAV */
@@ -67,12 +77,14 @@ nav a{
 color:white;
 text-decoration:none;
 font-weight:bold;
-padding:6px 10px;
-border-radius:5px;
+padding:10px 14px;
+border-radius:6px;
+transition:0.3s;
 }
 
 nav a:hover{
-background:rgba(255,255,255,0.2);
+background:white;
+color:#1b5e20;
 }
 
 /* CONTAINER */
@@ -86,63 +98,95 @@ padding:20px;
 /* CARD */
 .card{
 background:white;
-padding:20px;
+padding:25px;
 margin-top:20px;
+border-radius:12px;
+box-shadow:0 3px 12px rgba(0,0,0,0.1);
 border-left:6px solid #2e7d32;
-border-radius:10px;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
 }
 
-h2{
+.card h2{
 color:#1b5e20;
+margin-bottom:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:10px;
+}
+
+/* USER NAME */
+.user-name{
+font-size:17px;
+background:#e8f5e9;
+padding:8px 15px;
+border-radius:8px;
+color:#1b5e20;
+display:flex;
+align-items:center;
+gap:8px;
 }
 
 /* INPUTS */
-input, textarea, select{
+input,
+textarea,
+select{
 width:100%;
-padding:10px;
-margin-top:10px;
-border-radius:5px;
+padding:14px;
+margin-top:12px;
+border-radius:8px;
 border:1px solid #ccc;
+font-size:16px;
+outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+border-color:#2e7d32;
 }
 
 /* IMAGE */
 #preview{
 width:100%;
-max-height:250px;
+height:300px;
 object-fit:cover;
-margin-top:10px;
+margin-top:15px;
 border-radius:10px;
 display:none;
+border:2px solid #ddd;
 }
 
 /* BUTTON */
 button{
 background:#2e7d32;
 color:white;
-padding:10px 20px;
+padding:14px 20px;
 border:none;
-border-radius:5px;
+border-radius:8px;
 cursor:pointer;
-margin-top:10px;
+font-size:16px;
+font-weight:bold;
+transition:0.3s;
 }
 
 button:hover{
 background:#1b5e20;
+transform:scale(1.03);
 }
 
-/* VIEW ORDERS BUTTON */
+/* VIEW ORDERS */
 .green-btn{
-background:#2e7d32;
+display:inline-block;
+margin-top:20px;
+background:#43a047;
 color:white;
 padding:14px 28px;
 border-radius:10px;
-font-size:16px;
-font-weight:bold;
 text-decoration:none;
-display:inline-block;
+font-size:17px;
+font-weight:bold;
 transition:0.3s;
-margin-top:20px;
 }
 
 .green-btn:hover{
@@ -154,60 +198,103 @@ transform:scale(1.05);
 footer{
 background:#1b5e20;
 color:white;
-padding:30px 15px;
-margin-top:40px;
+padding:50px 20px 20px;
+margin-top:50px;
 }
 
 .footer-grid{
-max-width:1100px;
+max-width:1200px;
 margin:auto;
 display:grid;
-grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.footer-grid h3{
+margin-bottom:15px;
+font-size:24px;
+}
+
+.footer-grid p{
+line-height:1.7;
+color:#d7f5d9;
 }
 
 .footer-grid a{
-color:white;
-text-decoration:none;
 display:block;
-margin:5px 0;
+margin:10px 0;
+color:#d7f5d9;
+text-decoration:none;
+transition:0.3s;
 }
 
 .footer-grid a:hover{
-text-decoration:underline;
+color:white;
+padding-left:5px;
 }
 
 /* SOCIAL */
 .social{
 display:flex;
-gap:10px;
-margin-top:10px;
-
+gap:15px;
+margin-top:15px;
 }
 
 .social a{
-width:35px;
-height:35px;
+width:45px;
+height:45px;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 border-radius:50%;
-background:rgba(255,255,255,0.2);
+background:rgba(255,255,255,0.15);
 color:white;
+font-size:18px;
 text-decoration:none;
+transition:0.3s;
 }
 
 .social a:hover{
 background:white;
 color:#1b5e20;
+transform:translateY(-5px);
 }
 
-/* BOTTOM */
+/* COPYRIGHT */
 .bottom{
 text-align:center;
-margin-top:20px;
-font-size:14px;
-opacity:0.8;
+margin-top:30px;
+padding-top:20px;
+border-top:1px solid rgba(255,255,255,0.2);
+font-size:15px;
+color:#d7f5d9;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.header-container{
+flex-direction:column;
+text-align:center;
+}
+
+nav{
+justify-content:center;
+}
+
+.card h2{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.footer-grid{
+text-align:center;
+}
+
+.social{
+justify-content:center;
+}
+
 }
 
 </style>
@@ -221,11 +308,15 @@ opacity:0.8;
 <div class="header-container">
 
 <div class="logo">
+
 <img src="agricultural logo.png">
+
 <h1>RW-Rulindo Agro Market</h1>
+
 </div>
 
 <nav>
+
 <a href="index.html">Home</a>
 <a href="login2.html">Login</a>
 <a href="productshop.html">Shop</a>
@@ -233,6 +324,7 @@ opacity:0.8;
 <a href="checkautform.html">Orders</a>
 <a href="contact.html">Contact</a>
 <a href="sign up.html">Sign Up</a>
+
 </nav>
 
 </div>
@@ -242,52 +334,100 @@ opacity:0.8;
 <!-- CONTENT -->
 <div class="container">
 
-<!-- PRODUCT FORM -->
+<!-- PRODUCT DETAILS -->
 <div class="card">
-<h2>📦 Product Details</h2>
 
-<input type="text" id="name" placeholder="Product Name">
-<textarea id="desc" rows="3" placeholder="Product Description"></textarea>
+<h2>
 
-<input type="number" id="price" placeholder="Price per kg (RWF)">
-<input type="number" id="qty" placeholder="Quantity available (kg)">
+📦 Product Details
+
+<span class="user-name">
+
+<i class="fa-solid fa-user"></i>
+
+<span id="welcomeText">
+Farmer
+</span>
+
+</span>
+
+</h2>
+
+<input type="text"
+id="name"
+placeholder="Product Name">
+
+<textarea id="desc"
+rows="4"
+placeholder="Product Description"></textarea>
+
+<input type="number"
+id="price"
+min="1"
+placeholder="Price per kg (RWF)">
+
+<input type="number"
+id="qty"
+min="1"
+placeholder="Quantity available (kg)">
 
 <select id="category">
-<option>Grains 🌾</option>
-<option>Vegetables 🥕</option>
-<option>Fruits 🍎</option>
-<option>Other</option>
+
+<option value="">Select Product Category</option>
+
+<option>Tomatoes</option>
+<option>Onion</option>
+<option>Carrots</option>
+<option>Bananas</option>
+<option>Beans</option>
+<option>Maize</option>
+<option>Potatoes</option>
+<option>Milk</option>
+<option>Eggs</option>
+
 </select>
 
-<input type="text" id="location" placeholder="Location (District)">
+<input type="text"
+id="location"
+placeholder="Location (District)">
+
+<input type="tel"
+id="phone"
+placeholder="Phone Number">
+
 </div>
 
 <!-- IMAGE -->
 <div class="card">
-<h2>📸 Upload Image</h2>
 
-<input type="file" accept="image/*" onchange="previewImage(event)">
+<h2>📸 Upload Product Image</h2>
+
+<input type="file"
+id="imageInput"
+accept="image/*">
+
 <img id="preview">
+
 </div>
 
 <!-- SUBMIT -->
 <div class="card">
+
 <h2>🚀 Submit Product</h2>
-<button onclick="submitProduct()">Upload Product</button>
 
-<br>
+<button onclick="submitProduct()">
+Upload Product
+</button>
 
+<br><br>
 
-
-
-</div>
-
-</div>
-
-<!-- VIEW ORDERS BUTTON -->
 <a href="view order.html" class="green-btn">
 View Orders
 </a>
+
+</div>
+
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -295,28 +435,51 @@ View Orders
 <div class="footer-grid">
 
 <div>
+
 <h3>RW-Rulindo Agro Market</h3>
-<p>We connect farmers and buyers across Rwanda.</p>
+
+<p>
+We connect farmers and buyers across Rwanda.
+Fresh products directly from local farmers.
+</p>
+
 </div>
 
 <div>
+
 <h3>Quick Links</h3>
+
 <a href="index.html">Home</a>
 <a href="login2.html">Login</a>
 <a href="productshop.html">Shop</a>
 <a href="service.html">Services</a>
 <a href="checkautform.html">Orders</a>
 <a href="contact.html">Contact</a>
+
 </div>
 
 <div>
+
 <h3>Follow Us</h3>
 
 <div class="social">
-<a href="https://facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
-<a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
-<a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
-<a href="https://wa.me/250788123456"><i class="fa-brands fa-whatsapp"></i></a>
+
+<a href="https://facebook.com">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="https://instagram.com">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="https://twitter.com">
+<i class="fa-brands fa-twitter"></i>
+</a>
+
+<a href="https://wa.me/250788123456">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
 </div>
 
 </div>
@@ -331,23 +494,158 @@ View Orders
 
 <script>
 
-// IMAGE PREVIEW
-function previewImage(event){
-let image = document.getElementById("preview");
-image.src = URL.createObjectURL(event.target.files[0]);
-image.style.display = "block";
+/* ================= USER NAME ================= */
+
+let farmerName =
+localStorage.getItem("farmerName");
+
+if(farmerName){
+
+document.getElementById("welcomeText")
+.innerHTML = farmerName;
+
+}else{
+
+document.getElementById("welcomeText")
+.innerHTML = "Farmer";
+
 }
 
-// SUBMIT
-function submitProduct(){
-let name = document.getElementById("name").value;
+/* ================= IMAGE ================= */
 
-if(name === ""){
-alert("❌ Please fill product name");
+let imageData = "";
+
+/* FILE INPUT */
+
+document.getElementById("imageInput")
+.addEventListener("change", function(event){
+
+let file = event.target.files[0];
+
+if(!file){
+
 return;
+
 }
+
+/* FILE READER */
+
+let reader = new FileReader();
+
+reader.onload = function(e){
+
+imageData = e.target.result;
+
+/* SHOW IMAGE */
+
+document.getElementById("preview").src =
+imageData;
+
+document.getElementById("preview").style.display =
+"block";
+
+};
+
+reader.readAsDataURL(file);
+
+});
+
+/* ================= SUBMIT PRODUCT ================= */
+
+function submitProduct(){
+
+let name =
+document.getElementById("name").value;
+
+let desc =
+document.getElementById("desc").value;
+
+let price =
+document.getElementById("price").value;
+
+let qty =
+document.getElementById("qty").value;
+
+let category =
+document.getElementById("category").value;
+
+let location =
+document.getElementById("location").value;
+
+let phone =
+document.getElementById("phone").value;
+
+/* VALIDATION */
+
+if(
+name === "" ||
+desc === "" ||
+price === "" ||
+qty === "" ||
+category === "" ||
+location === "" ||
+phone === "" ||
+imageData === ""
+){
+
+alert("❌ Please fill all fields and upload image");
+
+return;
+
+}
+
+/* GET PRODUCTS */
+
+let products =
+JSON.parse(localStorage.getItem("products"))
+|| [];
+
+/* CREATE PRODUCT */
+
+let product = {
+
+name:name,
+desc:desc,
+price:price,
+qty:qty,
+category:category,
+location:location,
+phone:phone,
+image:imageData,
+farmer:farmerName,
+date:new Date().toLocaleDateString()
+
+};
+
+/* SAVE */
+
+products.push(product);
+
+localStorage.setItem(
+"products",
+JSON.stringify(products)
+);
+
+/* SUCCESS */
 
 alert("✅ Product uploaded successfully!");
+
+/* CLEAR FORM */
+
+document.getElementById("name").value = "";
+document.getElementById("desc").value = "";
+document.getElementById("price").value = "";
+document.getElementById("qty").value = "";
+document.getElementById("location").value = "";
+document.getElementById("phone").value = "";
+document.getElementById("category").value = "";
+document.getElementById("imageInput").value = "";
+
+document.getElementById("preview").style.display =
+"none";
+
+imageData = "";
+
 }
 
 </script>
